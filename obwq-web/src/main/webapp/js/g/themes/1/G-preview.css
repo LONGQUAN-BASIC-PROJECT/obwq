@@ -1,0 +1,98 @@
+#top {
+    position:absolute;
+    top:0;
+    left:0;
+    background:#222 url(../i/noisy_net.png);
+    height:34px;
+    z-index:10001;
+    width:100%;
+    border-bottom:1px solid #111;
+}
+
+body{-webkit-text-size-adjust:100%;}
+
+body, html {overflow:hidden; height:100%; background:url(../i/cream_dust.png);color:#fff;font-family:helvetica,sans-serif}
+
+#top #crumb {float:left; font-size:16px; margin-left:18px;}
+
+#top .btn {float:right; margin-top:6px; margin-right:10px;}
+#top a.back,
+#top a.home {font-size:12px; float:left; margin-top: 9px; color: #168Dd4; padding: 0 8px;
+    text-decoration:none;border-left:1px solid #333;}
+#top a.back{border-left:none;margin-left:8px;}
+#top .title {float:left; margin-right:10px; font-size:12px; line-height:32px;}
+#top a:hover{text-decoration:underline;}
+
+#top .nav,
+#top .switch{float:left}
+
+#theme-switcher {float:left; color: #fff; width:225px; margin-top:5px;line-height:12px; position:relative;background:#333;}
+#theme-switcher h1 {text-shadow:1px 1px 0 rgba(0,0,0,0.3); cursor:pointer; padding:5px 12px 6px; color:#bbb;
+    background:url("../i/arr2-down.png") no-repeat 95% 50%; font-size:12px;line-height:12px;font-weight:normal;background-color:#333;}
+
+#theme-switcher h1:hover{color:#fff;}
+
+#theme-switcher #themes {position:absolute; width:225px; top:23px;
+    font-size:12px;background:#111;
+    -moz-box-shadow:    0 1px 3px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    box-shadow:         0 1px 3px rgba(0,0,0,.2);
+    }
+
+#theme-switcher #themes a {display:block; text-decoration:none;  border-top:1px solid #222; padding:6px 12px;
+    line-height:1; position:relative;color:#bbb;text-shadow:1px 1px 0 rgba(0,0,0,0.3);}
+
+#theme-switcher #themes a:hover {background: #000; color:#168Dd4;}
+#theme-switcher #themes a.active {background: #333; color:#fff;cursor:default;}
+
+#theme-switcher #themes a span {font-size:11px; color:#555; right:10px; top:7px;
+    position:absolute;}
+#theme-switcher #themes a:hover span{color:#aaa}
+
+#preview-body {height:100%; margin-top:34px; overflow:auto;}
+
+#preview-body #demo {width:800px; margin:30px auto; height:432px;background:#fff;padding:12px;
+    -moz-box-shadow:    0 1px 3px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    box-shadow:         0 1px 3px rgba(0,0,0,.2);
+}
+
+html body.folio{background:#fff;}
+html body.fullscreen{background:#000;}
+
+#gallery{max-width:800px;margin: 48px auto}
+#preview-body #demo{width:auto;margin: 0 auto;height:auto}
+
+body.fullscreen #preview-body #demo{
+    -moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none;background:transparent;
+}
+
+body.folio #preview-body #demo {
+    width:auto;margin:30px 0 30px 20px;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none;
+}
+
+body.folio #gallery{max-width:none}
+
+body.fullscreen .galleria-container.fullscreen,
+body.folio .galleria-container.fullscreen{top:35px!important;bottom:0!important;height:auto!important}
+
+.btn a{display:inline-block;padding:4px 12px;background:#168Dd4; color:#fff;
+    font-size:12px;text-decoration:none;font-weight:bold;border-radius:2px;
+    -webkit-transition: background 0.1s ease-out;
+    -moz-transition: background 0.1s ease-out;
+}
+.btn a i{}
+.btn a span{}
+.btn a:hover{text-decoration:none!important;background-color:rgb(120, 209, 139);}
+
+@media only screen and (max-width: 630px) {
+    #top .switch span{display:none}
+    #theme-switcher{width:150px}
+    #theme-switcher #themes{width:150px}
+    #top .nav a{font-size:12px}
+}
+
+@media only screen and (max-width: 460px) {
+    #top .nav{display:none}
+}
+

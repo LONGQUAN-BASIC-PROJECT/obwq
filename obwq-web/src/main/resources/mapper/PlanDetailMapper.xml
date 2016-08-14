@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.desksoft.entity.mapper.PlanDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.desksoft.entity.PlanDetail" >
+    <id column="pd_id" property="pdId" jdbcType="VARCHAR" />
+    <result column="p_id" property="pId" jdbcType="VARCHAR" />
+    <result column="xx" property="xx" jdbcType="VARCHAR" />
+    <result column="yy" property="yy" jdbcType="VARCHAR" />
+    <result column="praise_count" property="praiseCount" jdbcType="DECIMAL" />
+    <result column="evaluate_count" property="evaluateCount" jdbcType="DECIMAL" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="picture_url" property="pictureUrl" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+  
+  
+  <sql id="Base_Column_List" >
+    pd_id, p_id,xx  ,yy , picture_url, gmt_create , gmt_modify,praise_count,evaluate_count,content
+  </sql>
+  
+  
+  <insert id="insert" parameterType="com.desksoft.entity.PlanDetail" >
+    insert into t_plan_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pdId != null" >
+        pd_id,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="xx != null" >
+        xx,
+      </if>
+      <if test="yy != null" >
+        yy,
+      </if>
+      <if test="pictureUrl != null" >
+        picture_url,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="praiseCount != null" >
+        praise_count,
+      </if>
+       <if test="evaluateCount != null" >
+        evaluate_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pdId != null" >
+        #{pdId},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="xx != null" >
+        #{xx,jdbcType=VARCHAR},
+      </if>
+      <if test="yy != null" >
+        #{yy,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureUrl != null" >
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify},
+      </if>
+       <if test="praiseCount != null" >
+        #{praiseCount},
+      </if>
+       <if test="evaluateCount != null" >
+        #{evaluateCount},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="selectBypId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_plan_detail
+    where p_id = #{pId,jdbcType=VARCHAR} order by gmt_create asc
+  </select>
+  
+  
+   <update id="updateByPrimaryKeySelective" parameterType="com.desksoft.entity.PlanDetail" >
+    update t_plan_detail
+    <set >
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="praiseCount != null" >
+        praise_count = praise_count +  #{praiseCount},
+      </if>
+       <if test="evaluateCount != null" >
+        evaluate_count = evaluate_count +  #{evaluateCount},
+      </if>
+       <if test="content != null" >
+        content =  #{content},
+      </if>
+    </set>
+     where pd_id = #{pdId,jdbcType=VARCHAR} 
+  </update>
+   
+  <delete id="delete"  parameterType="java.lang.String" >
+  		delete from t_plan_detail where p_id = #{pId}
+  </delete>
+  
+  
+  
+  <delete id="deleteByPrimaryKey"  parameterType="java.lang.String" >
+  		delete from t_plan_detail where pd_id = #{pdId}
+  </delete>
+  
+  
+  <select id="reloadHotData"   parameterType="java.lang.String"  resultMap="BaseResultMap">
+		select pcd.pd_id as pd_id ,#{pId} as p_id,xx,yy,picture_url,pcd.gmt_create,pcd.gmt_modify , content,pcd.praise_count,pcd.evaluate_count
+		from t_plan tpn , t_plan_detail pcd where tpn.p_id = pcd.p_id and tpn.flag = 1 and pcd.praise_count > 1
+  </select>
+  
+</mapper>

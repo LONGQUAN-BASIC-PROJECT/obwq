@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<sql-manager>
+	<sqls>
+		<sql>
+			<id>getUseCount</id>
+			<remark>查询用户各个学科使用次数</remark>
+			<content>
+				select  t.record_id,to_char(t.commit_time,'yyyy-mm-dd') AS commit_time,t.subject_id,t.subject_name,t.exam_paper_id,t.exam_name,count(*) count,sum(t.exam_score) sum_score from un_exam_record t
+				where t.student_id=#studentId#
+				group by  t.record_id,to_char(t.commit_time,'yyyy-mm-dd'),t.subject_id,t.subject_name,t.exam_paper_id,t.exam_name
+				order by t.subject_id
+			</content>
+		</sql>
+		<sql>
+			<id>getClassScore</id>
+			<remark>查询全班各个学科平均分</remark>
+			<content>
+				select  t.record_id,to_char(t.commit_time,'yyyy-mm-dd') AS commit_time,t.subject_id,t.subject_name,t.exam_paper_id,t.exam_name,count(*) count,sum(t.exam_score) sum_score from un_exam_record t,MR_USERINFO@MANAGER US
+		           where t.student_id = us.user_id
+		           and t.class_id=#classId#
+		           	and us.role_id=1
+					and us.is_deleted = 0
+		           group by  t.record_id,to_char(t.commit_time,'yyyy-mm-dd'),t.subject_id,t.subject_name,t.exam_paper_id,t.exam_name
+		           order by t.subject_id
+			</content>
+		</sql>
+		<sql>
+			<id>getSchoolScore</id>
+			<remark>查询全校各个学科平均分</remark>
+			<content>
+				select  t.record_id,to_char(t.commit_time,'yyyy-mm-dd') AS commit_time,t.subject_id,t.subject_name,t.exam_paper_id,t.exam_name,count(*) count,sum(t.exam_score) sum_score from un_exam_record t,MR_USERINFO@MANAGER US
+		           where t.student_id = us.user_id
+		           and us.school_id=#schoolId#
+		           and us.role_id=1
+					and us.is_deleted = 0
+		           group by  t.record_id,to_char(t.commit_time,'yyyy-mm-dd'),t.subject_id,t.subject_name,t.exam_paper_id,t.exam_name
+		           order by t.subject_id
+			</content>
+		</sql>
+		<sql>
+			<id>getRegionScore</id>
+			<remark>查询全区各个学科平均分</remark>
+			<content>
+		         select  t.subject_id,t.subject_name,count(*) count,sum(t.exam_score) sum_score from un_exam_record t,MR_USERINFO@MANAGER US
+					where t.student_id = us.user_id
+					and us.region_id=#regionId#
+					and us.role_id=1
+					and us.is_deleted = 0
+					group by  t.subject_id,t.subject_name
+					order by t.subject_id
+			</content>
+		</sql>
+		<sql>
+			<id>getRegionDetailScore</id>
+			<remark>查询全区各个学科平均分</remark>
+			<content>
+		   select  uer.record_id,to_char(uer.commit_time,'yyyy-mm-dd') AS commit_time,uer.subject_id,uer.subject_name,
+			uer.exam_paper_id,uer.exam_name,count(*) count,sum(uer.exam_score) sum_score
+			 from (
+			 select  t.exam_paper_id,count(*) count,sum(t.exam_score) sum_score from un_exam_record t
+							where t.student_id=#studentId#
+							group by  t.exam_paper_id) tt,
+			MR_USERINFO@MANAGER US,
+			un_exam_record uer
+			where us.user_id = uer.student_id
+			and us.region_id=#regionId#
+			and us.role_id=1
+			and us.is_deleted = 0
+			and tt.exam_paper_id = uer.exam_paper_id
+			group by uer.record_id,to_char(uer.commit_time,'yyyy-mm-dd'),
+			uer.subject_id,uer.subject_name,uer.exam_paper_id,uer.exam_name
+			order by uer.subject_id
+			</content>
+		</sql>
+		<sql>
+			<id>getProvinceScore</id>
+			<remark>查询全省各个学科平均分</remark>
+			<content>
+				select  t.subject_id,t.subject_name,count(*) count,sum(t.exam_score) sum_score from un_exam_record t,MR_USERINFO@MANAGER US
+					where t.student_id = us.user_id
+					and us.province_id=#provinceId#
+					and us.role_id=1
+					and us.is_deleted = 0
+					group by  t.subject_id,t.subject_name
+					order by t.subject_id
+			</content>
+		</sql>
+		<sql>
+			<id>getProvinceDetailScore</id>
+			<remark>查询全省各个学科学生做过的试卷平均分</remark>
+			<content>
+			select  uer.record_id,to_char(uer.commit_time,'yyyy-mm-dd') AS commit_time,uer.subject_id,uer.subject_name,
+			uer.exam_paper_id,uer.exam_name,count(*) count,sum(uer.exam_score) sum_score
+			 from (
+			 select  t.exam_paper_id,count(*) count,sum(t.exam_score) sum_score from un_exam_record t
+							where t.student_id=#studentId#
+							group by  t.exam_paper_id) tt,
+			MR_USERINFO@MANAGER US,
+			un_exam_record uer
+			where us.user_id = uer.student_id
+			and us.province_id=#provinceId#
+			and us.role_id=1
+			and us.is_deleted = 0
+			and tt.exam_paper_id = uer.exam_paper_id
+			group by uer.record_id,to_char(uer.commit_time,'yyyy-mm-dd'),
+			uer.subject_id,uer.subject_name,uer.exam_paper_id,uer.exam_name
+			order by uer.subject_id
+			</content>
+		</sql>
+		<sql>
+			<id>getTestPaperCount</id>
+			<remark>查询单元检测各个学科的试卷总数</remark>
+			<content>
+				select t.subject_id,t.subject_name,count(*) count from un_exam_paper t
+				group by t.subject_id,t.subject_name 
+			</content>
+		</sql>
+		<sql>
+			<id>getUserScoreByDate</id>
+			<remark>查询各个日期下各学科成绩</remark>
+			<content>
+				select to_char(t.commit_date,'yyyy-mm-dd') commit_date,t.subject_id,t.subject_name,score
+					from s_unit_subject_use_count t
+					where t.student_id=#studentId#
+					order by t.commit_date
+			</content>
+		</sql>
+	</sqls>
+</sql-manager>

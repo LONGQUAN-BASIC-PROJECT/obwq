@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+<!--   <mapping path="/page/*" decorator="/decorators/page.jsp"/> -->
+   <mapping path="/frt/*" decorator="/decorators/front.jsp"></mapping>
+   <mapping path="*/ajax/*"  exclue="true" />
+   <mapping path="/opterate/*" decorator="/decorators/manager.jsp"/>
+</sitemesh> 

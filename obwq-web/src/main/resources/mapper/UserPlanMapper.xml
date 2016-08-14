@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.desksoft.entity.mapper.UserPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.desksoft.entity.UserPlan" >
+    <id column="up_id" property="upId" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="p_id" property="pId" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    up_id, u_id,p_id , gmt_create ,  gmt_modify
+  </sql>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_user_plan
+    where up_id = #{upId,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="com.desksoft.entity.UserPlan" >
+    insert into t_user_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="upId != null" >
+        up_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="upId != null" >
+        #{upId,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="queryUserPlan" resultMap="BaseResultMap" parameterType="java.util.Map" >
+	select tup.up_id,tup.u_id,tup.p_id from t_user_plan  tup where u_id = #{userId} and p_id = #{planId}
+  </select>
+  
+  
+  <delete id="deleteUserPlan"  parameterType="java.util.Map">
+  	delete from  t_user_plan  where not   exists (select * from t_plan tl where tl.p_id = #{planId} 
+                                              and tl.u_id =  #{userId}) 
+									and p_id = #{planId} 
+								and u_id =  #{userId}  
+  </delete>
+  
+</mapper>

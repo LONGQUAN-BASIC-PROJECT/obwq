@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:aop="http://www.springframework.org/schema/aop"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:p="http://www.springframework.org/schema/p" 
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/aop 
+  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+  http://www.springframework.org/schema/context 
+  http://www.springframework.org/schema/context/spring-context-3.0.xsd
+  http://www.springframework.org/schema/tx 
+  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	
+	<bean id="lf" class="com.desksoft.common.LoadWebAddressFromXml"></bean>
+	<bean id="en" class="com.desksoft.common.LoadEnFromJson"></bean>
+	
+	<!-- <bean class="com.desksoft.common.ReloadHotData" init-method="init">
+		<property name="planDetailService" ref="planDetailService"></property>
+	</bean> -->
+
+
+	<bean id="mapHandler" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				 <entry key="englishWord">
+                  	<bean class="com.desksoft.handler.impl.EnglishWordProcessHandlerImpl"></bean>
+              	 </entry>
+				 <entry key="text">
+                  	<bean class="com.desksoft.handler.impl.TulingProcessHandlerImpl"></bean>
+              	 </entry>
+				 <entry key="default">
+                  	<bean class="com.desksoft.handler.impl.DefaultWxProcessHandlerImpl"></bean>
+              	 </entry>
+<!-- 				 <entry key="news"> -->
+<!--                   	<bean class="com.desksoft.handler.impl.NewsWxProcessHandlerImpl"></bean> -->
+<!--               	 </entry> -->
+			</map>
+		</constructor-arg>
+	</bean>
+
+</beans>

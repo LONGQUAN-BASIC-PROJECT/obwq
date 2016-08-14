@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.desksoft.entity.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.desksoft.entity.User" >
+    <id column="u_id" property="userId" jdbcType="VARCHAR" />
+    <id column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="DECIMAL" />
+    <result column="out_user_id" property="outUserId" jdbcType="VARCHAR" />
+    <result column="user_picture" property="userPicture" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModifidy" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    u_id,nick_name, email,user_type , out_user_id ,  gmt_create, gmt_modify
+  </sql>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_user
+    where languageId = #{languageid,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="com.desksoft.entity.User" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        u_id,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="outUserId != null" >
+        out_user_id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModifidy != null" >
+        gmt_modify,
+      </if>
+       <if test="userPicture != null" >
+        user_picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=DECIMAL},
+      </if>
+      <if test="outUserId != null" >
+        #{outUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModifidy != null" >
+        #{gmtModifidy,jdbcType=TIMESTAMP},
+      </if>
+       <if test="userPicture != null" >
+        #{userPicture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where u_id = #{userId,jdbcType=VARCHAR} 
+  </select>
+  
+  <select id="getUserByOutId" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where user_type = #{userType} and out_user_id = #{outUserId}
+  </select>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.desksoft.entity.User" >
+    update t_user
+    <set >
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+       <if test="userPicture != null" >
+        user_picture = #{userPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModifidy != null" >
+        gmt_modify = #{gmtModifidy,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+     where u_id = #{userId,jdbcType=VARCHAR} 
+  </update>
+  
+  <update id="updateUser" parameterType="java.util.Map">
+  		update t_user set email = #{email,jdbcType=VARCHAR}  where u_id = #{userId,jdbcType=VARCHAR} 
+  </update>
+  
+</mapper>

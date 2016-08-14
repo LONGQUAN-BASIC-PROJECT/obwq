@@ -1,0 +1,74 @@
+		#cnzz_stat_icon_1253663835 {
+			display: none;
+		}
+		
+		body {
+			background: #260930;
+		}
+
+		.ks-autoResponsive-container,.ks-autoResponsive-container a {
+            position: relative;
+            overflow: hidden;
+            font-size: 20px;
+            color: #fff0f0;
+            text-align: center;
+            vertical-align: middle;
+            font-family:Futura,'Century Gothic',"Microsoft Yahei",sans-serif;
+            TEXT-DECORATION:none
+        }
+        .ks-autoResponsive-container div{
+            position: absolute;
+        }
+        .ks-autoResponsive-container .block{
+            width: 140px;
+            height: 50px;
+            border-radius: 10px;
+            opacity: 0.7;
+            line-height:50px;
+        }
+        
+        .ks-waterfall {
+            position: absolute;
+            left:-9999px;
+            top:-9999px;
+        }
+        .dragging{
+
+            opacity: 0.5;
+            z-index:999;
+        }
+        .ks-autoResponsive-container{
+            position:relative;
+            overflow: hidden;
+        }
+        .ks-autoResponsive-container div{
+            position:absolute;
+        }
+        
+        .color_1 {
+        	background:url("../images/bg/1.png");
+        }
+        .color_2 {
+        	background:url("../images/bg/2.png");
+        }
+        .color_3 {
+        	background:url("../images/bg/3.png");
+        }
+        .color_4 {
+        	background:url("../images/bg/4.png");
+        }
+        .color_5 {
+        	background:url("../images/bg/5.png");
+        }
+        .color_6 {
+        	background:url("../images/bg/6.png");
+        }
+        .color_7 {
+        	background:url("../images/bg/7.png");
+        }
+        .color_8 {
+        	background:url("../images/bg/8.png");
+        }
+        .color_9 {
+        	background:url("../images/bg/9.png");
+        }

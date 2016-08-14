@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.desksoft.entity.mapper.PraiseMapper" >
+  <resultMap id="BaseResultMap" type="com.desksoft.entity.Praise" >
+    <id column="r_id" property="rId" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="pd_id" property="pdId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    r_id,u_id,pd_id
+  </sql>
+  
+  
+  <insert id="insert" parameterType="com.desksoft.entity.Praise" >
+    insert into t_praise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rId != null" >
+        r_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="pdId != null" >
+        pd_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rId != null" >
+        #{rId},
+      </if>
+      <if test="uId != null" >
+        #{uId},
+      </if>
+      <if test="pdId != null" >
+        #{pdId},
+      </if>
+    </trim>
+  </insert>
+  
+</mapper>

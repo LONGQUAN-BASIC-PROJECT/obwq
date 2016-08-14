@@ -1,0 +1,415 @@
+<XmlBaseData>
+  <xmlCategory>
+    <XmlCategory>
+      <categoryid>aaaaaaaa</categoryid>
+      <categoryname>常用公共地址</categoryname>
+      <webAddress>
+          <XmlWebAddress>
+          <entryId>dsdffssdfsdfdf</entryId>
+          <entryName>快递查询</entryName>
+          <address>http://www.kuaidi.com/</address>
+        </XmlWebAddress>
+	<XmlWebAddress>
+          <entryId>dsfsdf</entryId>
+          <entryName>BAIDU</entryName>
+          <address>https://www.baidu.com/</address>
+        </XmlWebAddress>
+	 <XmlWebAddress>
+          <entryId>dsfsdf</entryId>
+          <entryName>GOOGLE</entryName>
+          <address>https://www.google.com.hk/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>xxxxxxxxxxxxxxxx</entryId>
+          <entryName>开源中国</entryName>
+          <address>http://www.oschina.net</address>
+        </XmlWebAddress>
+         <XmlWebAddress>
+          <entryId>xxxxxxxxxxxxxxxx</entryId>
+          <entryName>OpenSource</entryName>
+          <address>http://www.open-open.com/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>sssss</entryId>
+          <entryName>Info IT新闻</entryName>
+          <address>http://www.infoq.com/cn/</address>
+        </XmlWebAddress>
+         <XmlWebAddress>
+          <entryId>sasdfasd</entryId>
+          <entryName>Apache</entryName>
+          <address>http://www.apache.org/</address>
+        </XmlWebAddress>
+         <XmlWebAddress>
+          <entryId>sssdfsss</entryId>
+          <entryName>IBM中国</entryName>
+          <address>https://www.ibm.com/developerworks/cn/java/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>sssdfsss</entryId>
+          <entryName>CSDN</entryName>
+          <address>http://www.csdn.net</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>dsfssdfsdfdf</entryId>
+          <entryName>ATA社区</entryName>
+          <address>http://www.atatech.org/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>dsfssdfsdfdf</entryId>
+          <entryName>stackoverflow</entryName>
+          <address>http://stackoverflow.com/</address>
+        </XmlWebAddress>
+	<XmlWebAddress>
+          <entryId>dsfssdfsdfdf</entryId>
+          <entryName>并发网站</entryName>
+          <address>http://ifeve.com/</address>
+        </XmlWebAddress>
+      </webAddress>
+    </XmlCategory>
+     
+	   
+	
+	 
+	 <XmlCategory>
+      <categoryid>aaahadfsdsaaaaa</categoryid>
+      <categoryname>开心一刻</categoryname>
+      <webAddress>
+		<XmlWebAddress>
+          <entryId>dsfsdsfssdfadfdf</entryId>
+          <entryName>19楼</entryName>
+          <address>http://www.19lou.com/</address>
+        </XmlWebAddress>
+       <XmlWebAddress>
+          <entryId>e585454</entryId>
+          <entryName>阿里味儿 </entryName>
+          <address>http://www.aliway.com/index.php</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>e5854da54</entryId>
+          <entryName>糗事百科</entryName>
+          <address>http://www.qiushibaike.com/</address>
+        </XmlWebAddress>
+		 <XmlWebAddress>
+          <entryId>dsfasd</entryId>
+          <entryName>囧闻囧事</entryName>
+          <address>http://www.qwq4.com/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>oljsafa</entryId>
+          <entryName>中文幽默王</entryName>
+          <address>http://www.haha365.com/</address>
+        </XmlWebAddress>
+		 <XmlWebAddress>
+          <entryId>dsfasd</entryId>
+          <entryName>暴走漫画</entryName>
+          <address>http://baozoumanhua.com/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>dsfasd</entryId>
+          <entryName>开心驿站</entryName>
+          <address>http://www.kaixinyizhan.com/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>dsfasd</entryId>
+          <entryName>囧闻联播</entryName>
+          <address>http://baozoumanhua.com/</address>
+        </XmlWebAddress>
+      </webAddress>
+    </XmlCategory>
+     
+	 
+	  <XmlCategory>
+      <categoryid>aaahadfssdfdsaaaaa</categoryid>
+      <categoryname>热爱美图</categoryname>
+      <webAddress>
+	  <XmlWebAddress>
+          <entryId>e5854da54</entryId>
+          <entryName>妹子美图</entryName>
+          <address>http://www.meizitu.com/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>dsfasd</entryId>
+          <entryName>美女高清</entryName>
+          <address>http://www.umei.cc/</address>
+        </XmlWebAddress>
+		 <XmlWebAddress>
+          <entryId>dsfasd</entryId>
+          <entryName>美女私房照</entryName>
+          <address>http://www.mnsfz.com/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>oljsafa</entryId>
+          <entryName>4493美图</entryName>
+          <address>http://www.4493.com/</address>
+        </XmlWebAddress>
+		 <XmlWebAddress>
+          <entryId>dsfasd</entryId>
+          <entryName>美女图片</entryName>
+          <address>http://www.169bb.com/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>dsfasd</entryId>
+          <entryName>美女哦</entryName>
+          <address>http://meinv.tao123.com/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>dsfasd</entryId>
+          <entryName>爱图小站</entryName>
+          <address>http://oi22.com/</address>
+        </XmlWebAddress>
+      </webAddress>
+    </XmlCategory>
+	 
+	  <XmlCategory>
+      <categoryid>aaahadfscgeaaaaa</categoryid>
+      <categoryname>看看新闻</categoryname>
+      <webAddress>
+        <XmlWebAddress>
+          <entryId>dsfsdsfssdfadfdf</entryId>
+          <entryName>网易新闻</entryName>
+          <address>http://news.163.com/</address>
+        </XmlWebAddress>
+       <XmlWebAddress>
+          <entryId>se5854hwf54</entryId>
+          <entryName>凤凰资讯</entryName>
+          <address>http://news.ifeng.com/</address>
+        </XmlWebAddress>
+		 <XmlWebAddress>
+          <entryId>e5854dsda54</entryId>
+          <entryName>人民网</entryName>
+          <address>http://www.people.com.cn/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>ave5854da54</entryId>
+          <entryName>南方都市报</entryName>
+          <address>http://www.nandu.com/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>ave5854da54</entryId>
+          <entryName>美国CNN</entryName>
+          <address>http://www.cnn.com/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>ave5854da54</entryId>
+          <entryName>联合国新闻</entryName>
+          <address>http://www.un.org/chinese/News/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>ave5854da54</entryId>
+          <entryName>环球军事</entryName>
+          <address>http://mil.huanqiu.com/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>ave5854da54</entryId>
+          <entryName>凤凰网军事</entryName>
+          <address>http://news.ifeng.com/mil/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>ave5854da54</entryId>
+          <entryName>国防部</entryName>
+          <address>http://www.mod.gov.cn/</address>
+        </XmlWebAddress>
+		
+      </webAddress>
+    </XmlCategory>
+	 
+	  <XmlCategory>
+      <categoryid>cadhar</categoryid>
+      <categoryname>实用工具</categoryname>
+      <webAddress>
+	  <XmlWebAddress>
+          <entryId>sdfssddgasdf</entryId>
+          <entryName>文件服务器</entryName>
+          <address>http://file.obwq.cn/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>sdfsdgasdf</entryId>
+          <entryName>Markdown</entryName>
+          <address>http://m.obwq.cn</address>
+        </XmlWebAddress>
+       <XmlWebAddress>
+          <entryId>e5854sdg54</entryId>
+          <entryName>物流详情资料</entryName>
+          <address>http://tbdocs.alibaba-inc.com/display/LGDetail/Home/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>e585ef4sdsgs54</entryId>
+          <entryName>物流详情积累</entryName>
+          <address>http://gitlab.alibaba-inc.com/guoxing.zgx/longquan/wikis/pages</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>e585effsa4sdgs54</entryId>
+          <entryName>问题统计</entryName>
+          <address>http://work.cainiao-inc.cn/projects/wuliu-detail</address>
+        </XmlWebAddress>
+	 <XmlWebAddress>
+          <entryId>e585edfffsa4sdgs54</entryId>
+          <entryName>微信公众平台</entryName>
+          <address>https://mp.weixin.qq.com/</address>
+        </XmlWebAddress>
+      </webAddress>
+    </XmlCategory>    
+	 
+    <XmlCategory>
+      <categoryid>bbbsdfsdbbbb</categoryid>
+      <categoryname>淘宝专用</categoryname>
+      <webAddress>
+             
+        <XmlWebAddress>
+          <entryId>ehqsdDFSsdfDFfsdfdsdfsera</entryId>
+          <entryName>IDB</entryName>
+          <address>http://idb.alibaba-inc.com/</address>
+        </XmlWebAddress>
+         
+             
+        <XmlWebAddress>
+          <entryId>ehqsdfsdsdffdsdfsera</entryId>
+          <entryName>Aone2</entryName>
+          <address>http://aone.alibaba-inc.com/aone2</address>
+        </XmlWebAddress>
+         
+        <XmlWebAddress>
+          <entryId>ehqsdfsdsdffdsd554fsera</entryId>
+          <entryName>SCM</entryName>
+          <address>http://scm.taobao.net/</address>
+        </XmlWebAddress>
+         
+        <XmlWebAddress>
+          <entryId>ehqsdfsABV4fsera</entryId>
+          <entryName>WF 流程</entryName>
+          <address>http://wf.alibaba-inc.com/</address>
+        </XmlWebAddress>
+         
+        <XmlWebAddress>
+          <entryId>ehqsdfsABV4fsera</entryId>
+          <entryName>OPS入口</entryName>
+          <address>http://ops.jm.taobao.net/ops-security/default.htm</address>
+        </XmlWebAddress>
+         
+         
+        <XmlWebAddress>
+          <entryId>ehqsdDFSDFfsdfdsdfsera</entryId>
+          <entryName>IDE</entryName>
+          <address>http://ide.cheetah.alibaba-inc.com:8000/</address>
+        </XmlWebAddress>
+         
+        <XmlWebAddress>
+          <entryId>xxxxxxxxxxsdfsdfsdfxxxxxx</entryId>
+          <entryName>uicConsole</entryName>
+          <address>http://uic.admin.taobao.org:9999/uicConsole/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>sssssssss</entryId>
+          <entryName>HSF查询</entryName>
+          <address>http://ops.jm.taobao.net/service-manager/</address>
+        </XmlWebAddress>
+         <XmlWebAddress>
+          <entryId>sssssdsfhqsssss</entryId>
+          <entryName>EagleEye</entryName>
+          <address>http://eagleeye.taobao.net:9999/index</address>
+        </XmlWebAddress>
+         
+        <XmlWebAddress>
+          <entryId>sdfSGasher544df</entryId>
+          <entryName>谁的项目环境</entryName>
+          <address>http://emp.taobao.net/node_list.htm</address>
+        </XmlWebAddress>
+         
+         
+        <XmlWebAddress>
+          <entryId>ehqera</entryId>
+          <entryName>PE system</entryName>
+          <address>http://pesystem.alibaba-inc.com:9999/app/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>ehqsdfsdfdera</entryId>
+          <entryName>淘宝百科</entryName>
+          <address>http://baike.corp.taobao.com/</address>
+        </XmlWebAddress>
+         
+        <XmlWebAddress>
+          <entryId>ehqsdfsdsdffdsdfsdfsera</entryId>
+          <entryName>webmail</entryName>
+          <address>https://webmail.alibaba-inc.com/alimail/</address>
+        </XmlWebAddress>
+         
+         
+        <XmlWebAddress>
+          <entryId>ehqsdDsdf94dfsera</entryId>
+          <entryName>查找JAR包</entryName>
+          <address>http://repo.alibaba-inc.com/nexus/index.html</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>e425f94dfsera</entryId>
+          <entryName>KELUDE</entryName>
+          <address>http://kelude.taobao.net/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>e425f9454ra</entryId>
+          <entryName>AOPS</entryName>
+          <address>http://aops.alibaba-inc.com/</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>sdfasdf</entryId>
+          <entryName>FREEDOM</entryName>
+          <address>http://freedom.alibaba-inc.com:9999/listPublishPlan.htm</address>
+        </XmlWebAddress>
+         
+                 
+        <XmlWebAddress>
+          <entryId>sdfSGas544df</entryId>
+          <entryName>API接入</entryName>
+          <address>http://api.taobao.com/autoapi/index.htm</address>
+        </XmlWebAddress>
+                 
+        <XmlWebAddress>
+          <entryId>sdfSGas544df</entryId>
+          <entryName>SPM申请中心</entryName>
+          <address>http://spm.alibaba-inc.com/spm/spmRules.htm</address>
+        </XmlWebAddress>
+         
+         
+        <XmlWebAddress>
+          <entryId>sdfSGas544df</entryId>
+          <entryName>alimonitor</entryName>
+          <address>http://monitor.alibaba-inc.com/monitor/view/monitorItemStatus.htm</address>
+        </XmlWebAddress>
+         
+        <XmlWebAddress>
+          <entryId>sdfSGasdsdfs544df</entryId>
+          <entryName>SVN代码搜索</entryName>
+          <address>http://cs.taobao.net/</address>
+        </XmlWebAddress>
+         
+        <XmlWebAddress>
+          <entryId>sdfSGasdsdfsds544df</entryId>
+          <entryName>阿里学习</entryName>
+          <address>http://xue.alibaba-inc.com/trs/trsindex.htm</address>
+        </XmlWebAddress>
+        <XmlWebAddress>
+          <entryId>ssdfdf4df</entryId>
+          <entryName>MC消息中心</entryName>
+          <address>http://ims.admin.taobao.org/index.htm</address>
+        </XmlWebAddress>
+         
+		  <XmlWebAddress>
+          <entryId>ssdfddfsdf4df</entryId>
+          <entryName>菜鸟测试工程</entryName>
+          <address>http://cntest.daily.cainiao-inc.net</address>
+        </XmlWebAddress>
+			
+		<XmlWebAddress>
+          <entryId>ssdfddfsdf4df</entryId>
+          <entryName>菜鸟技术资源</entryName>
+          <address>http://projectview.alibaba-inc.com/</address>
+        </XmlWebAddress>
+		<XmlWebAddress>
+          <entryId>ssdfddfsdf4df</entryId>
+          <entryName>每周日常发布清单</entryName>
+          <address>http://confluence.taobao.ali.com/pages/viewpage.action?pageId=244679830</address>
+        </XmlWebAddress>
+		
+      </webAddress> 
+    </XmlCategory>
+  </xmlCategory>
+</XmlBaseData>
