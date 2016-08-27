@@ -50,7 +50,7 @@
         }
         
         function appendChild(record, rowIndex, colIndex, options) {
-            return '<a href="addCategoryDetail.htm?id=' + gridObj.getRecordIndexValue(record, 'id')  + '" target="_blank">添加子类</a>';
+            return '<a href="addCategoryDetail.htm?id=' + gridObj.getRecordIndexValue(record, 'id') + "&phone=" + gridObj.getRecordIndexValue(record, 'phone')   + '" target="_blank">添加子类</a>';
         }
         
         

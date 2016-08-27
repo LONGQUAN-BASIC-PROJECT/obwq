@@ -15,6 +15,8 @@ public class Service implements Serializable {
 	
 	private static final long serialVersionUID = -3605330930204787884L;
 
+	private String id ;
+	
 	private String name ;
 	
 	private String doTypeKey ;
@@ -23,6 +25,7 @@ public class Service implements Serializable {
 	
 	private Integer xseqt ;
 
+	private String buttonType ;
 	
 	public Service(){}
 	
@@ -32,11 +35,13 @@ public class Service implements Serializable {
 		this.doTypeValue = tv ; 
 	}
 	
-	public Service(String n, String tk ,String tv,Integer seq){
+	public Service(String i ,String n, String tk ,String tv,Integer seq,String bt){
+		this.id = i ;
 		this.name = n ;
 		this.doTypeKey = tk ;
 		this.doTypeValue = tv ; 
 		this.xseqt = seq ;
+		this.buttonType = bt ;
 	}
 	
 	public String getName() {
@@ -69,6 +74,22 @@ public class Service implements Serializable {
 
 	public void setXseqt(Integer xseqt) {
 		this.xseqt = xseqt;
+	}
+
+	public String getButtonType() {
+		return buttonType;
+	}
+
+	public void setButtonType(String buttonType) {
+		this.buttonType = buttonType;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

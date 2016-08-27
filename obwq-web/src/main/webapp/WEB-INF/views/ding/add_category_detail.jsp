@@ -27,7 +27,7 @@
 			}
 			
 			
-			 $.post("saveCategoryDatail.htm",
+		    $.post("saveCategoryDatail.htm",
 					  {
 				 		 pid : $("#pid").val(),
 						 name : name ,
@@ -37,7 +37,6 @@
 						 buttonType : buttonType
 					  },
 					  function(result){
-// 			    		 alert(result.success)
 			    		 if(result.success){
 			    			 alert("添加成功");
 			    		 }else if(result.desc){
@@ -48,15 +47,66 @@
 			  		  }
 			  );
 			
-		})
+			window.reload();
+		});
+		
+		$("#submitUpdate").click(function(){
+			var name = $("#name").val();
+			var doTypeKey = $("#doTypeKey").val();
+			var doTypeValue = $("#doTypeValue").val();
+			var xseqt = $("#xseqt").val();
+			var buttonType = $("#buttonType").val();
+
+			
+			if(name.length < 1 || doTypeKey.length < 1  || doTypeValue.length < 1  || xseqt.length < 1 || buttonType.length < 1){
+				alert("请填写数据,所有字段都不能为空");
+				return ;
+			}
+			
+			
+		    $.post("updateCategoryDatail.htm",
+					  {
+				 		 id : $("#id").val(),
+						 name : name ,
+						 doTypeKey : doTypeKey ,
+						 doTypeValue : doTypeValue ,
+						 xseqt : xseqt ,
+						 buttonType : buttonType
+					  },
+					  function(result){
+			    		 if(result.success){
+			    			 alert("更新成功");
+			    		 }else if(result.desc){
+			    			 alert("添加失败,原因:" + result.desc);
+			    		 }else {
+			    			 alert("更新失败");
+			    		 }
+			  		  }
+			  );
+			
+		    window.location.reload();
+		});
 		
 	})
 	
+	//name="${item.name}" doTypeKey="${item.doTypeKey}"  doTypeValue="${item.doTypeValue}"  xseqt="${item.xseqt}"   buttonType="${item.buttonType}"
+	function resetUpdate (o){
+			
+			$("#name").val($(o).attr("name"));
+			$("#doTypeKey").val($(o).attr("doTypeKey"));
+			$("#doTypeValue").val($(o).attr("doTypeValue"));
+			$("#xseqt").val($(o).attr("xseqt"));
+			$("#buttonType").val($(o).attr("buttonType"));
+			$("#id").val($(o).attr("id"));
+
+	}
 	</script>
 </head>
 <body>
 	
+	<input id="id"  type="hidden" />
 	<input id="pid" value="${id}" type="hidden" />
+    <input id="phone" value="${phone}" type="hidden" />
 	
 	<h1 style="margin-bottom: 20px;margin-left: 20px"> 添加子类别 </h1>
 	
@@ -91,17 +141,56 @@
 		<select id="buttonType">
 			<option value="btn1"> btn1</option>
 			<option  value="btn2"> btn2</option>
-			<option  value="btn3"> btn3</option>
-			<option  value="btn4"> btn4</option>
+			<!-- 	<option  value="btn3"> btn3</option> -->
 		</select>
 		
 		<br /><br />
-		
-		
-		<input type="button" value="提交" id="submit"> 
+		<input type="button" value="提交数据" id="submit" /> 		<input type="button" value="更新数据" id="submitUpdate" style="margin-left: 30px" /> 
 		
 		
 	</div>
+	
+	<table style="margin-top: 30px;"   border="1" >
+		<tr>
+			<td width="200px"> BTN1 </td>
+			<td  width="200px"> BTN2 </td>
+			<td  width="200px"> BTN3 </td>
+		</tr>
+		
+		<tr>
+			<td>
+				<table>
+					
+					<c:forEach var="item" items='${resultMap.get("btn1")}'> 
+						<tr>
+							<td onclick="resetUpdate(this)" id="${item.id}" name="${item.name}" doTypeKey="${item.doTypeKey}"  doTypeValue="${item.doTypeValue}"  xseqt="${item.xseqt}"   buttonType="${item.buttonType}">${item.name} -- ${item.xseqt}</td>
+						</tr>
+					</c:forEach>
+				
+				</table>
+				
+			</td>
+			<td> 
+				<table>
+					<c:forEach var="item" items='${resultMap.get("btn2")}'> 
+						<tr>
+							<td onclick="resetUpdate(this)" id="${item.id}"  name="${item.name}" doTypeKey="${item.doTypeKey}"  doTypeValue="${item.doTypeValue}"  xseqt="${item.xseqt}"   buttonType="${item.buttonType}">${item.name} -- ${item.xseqt}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			
+			</td>
+			<%-- <td> 
+				<table>
+					<c:forEach var="item" items='${resultMap.get("btn3")}'> 
+						<tr>
+							<td onclick="resetUpdate(this)" id="${item.id}"  name="${item.name}" doTypeKey="${item.doTypeKey}"  doTypeValue="${item.doTypeValue}"  xseqt="${item.xseqt}"   buttonType="${item.buttonType}">${item.name} -- ${item.xseqt}</td>
+						</tr>
+					</c:forEach>
+				</table>	
+			</td> --%>
+		</tr>
+	</table>
 	
 	
 </body>

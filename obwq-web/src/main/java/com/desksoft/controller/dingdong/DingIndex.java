@@ -1,7 +1,6 @@
 package com.desksoft.controller.dingdong;
 
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,8 +67,14 @@ public class DingIndex {
 	
 	
 	@RequestMapping(value = "/addCategoryDetail", method = RequestMethod.GET)
-	public String addCategoryDetail(HttpServletRequest request,String id) {
+	public String addCategoryDetail(HttpServletRequest request,String id,String phone) {
 		request.setAttribute("id", id);
+		request.setAttribute("phone", phone);
+		
+		List<Categorydetail> cdlist =  categoryService.queryCategoryDetail(phone);
+		Map<String, List<Service>> resultMap = CategoryUtil.converData(cdlist);
+		request.setAttribute("resultMap", resultMap);
+
 		return "/ding/add_category_detail.jsp";
 	}
 	 
@@ -80,7 +85,7 @@ public class DingIndex {
 		Map<String,Object> result = new HashMap<String, Object>();
 		result.put("success", false);
 		
-		if(StringUtils.isEmpty(name) || StringUtils.isEmpty(doTypeKey) 
+		if(StringUtils.isEmpty(name) || StringUtils.isEmpty(pid) || StringUtils.isEmpty(doTypeKey) 
 				|| StringUtils.isEmpty(doTypeValue)   || StringUtils.isEmpty(buttonType)){
 			result.put("success", false);
 			result.put("desc", "数据不能为空");
@@ -90,6 +95,38 @@ public class DingIndex {
 		try{
 			
 			categoryService.insertCategoryDetail(pid, name, doTypeKey, doTypeValue, xseqt, buttonType);
+			result.put("success", true);
+
+		}catch (DuplicateKeyException e) {
+			result.put("success", false);
+			result.put("desc", "相同位置，相同的顺序，不有重复的数据");
+		}
+		catch (Exception e) {
+			result.put("success", false);
+			result.put("desc", "系统异常");
+		}
+		return result;
+	}
+	
+	
+	
+	 
+	@ResponseBody
+	@RequestMapping(value = "/updateCategoryDatail", method = RequestMethod.POST)
+	public Object updateCategoryDatail(HttpServletRequest request,String id , String  name,String doTypeKey,String  doTypeValue ,Integer xseqt ,String buttonType) {
+		Map<String,Object> result = new HashMap<String, Object>();
+		result.put("success", false);
+		
+		if(StringUtils.isEmpty(name)   || StringUtils.isEmpty(id) || StringUtils.isEmpty(doTypeKey) 
+				|| StringUtils.isEmpty(doTypeValue)   || StringUtils.isEmpty(buttonType)){
+			result.put("success", false);
+			result.put("desc", "数据不能为空");
+			return result ;
+		}
+		
+		try{
+			
+			categoryService.updateCategoryDetail(id, name, doTypeKey, doTypeValue, xseqt, buttonType);
 			result.put("success", true);
 
 		}catch (DuplicateKeyException e) {
@@ -145,93 +182,5 @@ public class DingIndex {
 	}
 	
 
-	
-	static Map<String, List<Service>> buttonData_95555 = new HashMap<String, List<Service>>() {
-		private static final long serialVersionUID = 1L;
-		{
-			put("btn_1", new ArrayList<Service>() {
-				private static final long serialVersionUID = 1L;
-
-				{
-					add(new Service("查看账单", Service.DO_TYPE_KEY_MSGREPLY, "#ZD"));
-					add(new Service("查看余额", Service.DO_TYPE_KEY_MSGREPLY, "#1212"));
-				}
-			});
-
-			put("btn_2", new ArrayList<Service>() {
-				private static final long serialVersionUID = 1L;
-				{
-					add(new Service("糗百", "openUrl",
-							"http://www.qiushibaike.com/"));
-					add(new Service("新浪", "openUrl", "http://www.sina.com.cn/"));
-				}
-			});
-			put("btn_3", new ArrayList<Service>() {
-				private static final long serialVersionUID = 1L;
-				{
-					add(new Service("关于", "openActive",
-							"com.andbase.login.AboutActivity"));
-					add(new Service("支持我", "openActive",
-							"com.andbase.activity.SupportMeActivity"));
-				}
-			});
-			put("btn_4", new ArrayList<Service>() {
-				private static final long serialVersionUID = 1L;
-				{
-					add(new Service("反馈", "openActive",
-							"com.andbase.activity.SupportMeActivity"));
-				}
-			});
-		}
-	};
-
-	static Map<String, List<Service>> buttonData_10010 = new HashMap<String, List<Service>>() {
-		private static final long serialVersionUID = 1L;
-
-		{
-			put("btn_1", new ArrayList<Service>() {
-				private static final long serialVersionUID = 1L;
-
-				{
-					add(new Service("当月话费", Service.DO_TYPE_KEY_MSGREPLY, "101"));
-					add(new Service("话费明细", Service.DO_TYPE_KEY_MSGREPLY,
-							"HFMX"));
-					add(new Service("帐户余额", Service.DO_TYPE_KEY_MSGREPLY, "102"));
-
-				}
-			});
-
-			put("btn_2", new ArrayList<Service>() {
-				private static final long serialVersionUID = 1L;
-				{
-					add(new Service("糗百", "openUrl",
-							"http://www.qiushibaike.com/"));
-					add(new Service("新浪", "openUrl", "http://www.sina.com.cn/"));
-				}
-			});
-			put("btn_3", new ArrayList<Service>() {
-				private static final long serialVersionUID = 1L;
-				{
-					add(new Service("关于", "openActive",
-							"com.andbase.login.AboutActivity"));
-					add(new Service("支持我", "openActive",
-							"com.andbase.activity.SupportMeActivity"));
-				}
-			});
-			put("btn_4", new ArrayList<Service>() {
-				private static final long serialVersionUID = 1L;
-				{
-					add(new Service("反馈", "openActive",
-							"com.andbase.activity.SupportMeActivity"));
-				}
-			});
-		}
-	};
-
-	static {
-		allData.put("10010", buttonData_10010);
-		allData.put("95555", buttonData_95555);
-
-	}
 
 }

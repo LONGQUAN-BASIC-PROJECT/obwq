@@ -90,13 +90,40 @@
   
   
    <select id="queryCategoryDetail" parameterType="java.util.Map" resultMap="BaseResultMap" >
-  	select 
-    dcd.id ,dcd.name , dcd.do_type_key ,dcd.do_type_value , dcd.button_type ,dcd.xseqt ,dcd.cg_id ,   dcd.gmt_create,dcd.gmt_modify
-    from d_category dc, d_category_detail dcd  where dc.id = dcd.cg_id 
-    <if test="phone != null" >
-        and phone = #{phone}
-    </if>
-    
+	  	select 
+	    dcd.id ,dcd.name , dcd.do_type_key ,dcd.do_type_value , dcd.button_type ,dcd.xseqt ,dcd.cg_id ,   dcd.gmt_create,dcd.gmt_modify
+	    from d_category dc, d_category_detail dcd  where dc.id = dcd.cg_id 
+	    <if test="phone != null" >
+	        and phone = #{phone}
+	    </if>
   </select>
+  
+  <update id="updateByPrimaryKey" parameterType="com.desksoft.entity.Categorydetail" >
+    update d_category_detail
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        do_type_key = #{doTypeKey,jdbcType=VARCHAR},
+      </if>
+       <if test="name != null" >
+        do_type_value = #{doTypeValue,jdbcType=VARCHAR},
+      </if>
+       <if test="name != null" >
+        xseqt = #{xseqt,jdbcType=DECIMAL},
+      </if>
+       <if test="name != null" >
+        button_type = #{buttonType,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
   
 </mapper>

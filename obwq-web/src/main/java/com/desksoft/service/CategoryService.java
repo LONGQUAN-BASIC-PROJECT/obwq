@@ -60,6 +60,18 @@ public class CategoryService  {
 		categoryDetailDao.insert(categorydetail);
 	}
 	
+public void updateCategoryDetail(String id , String  name,String doTypeKey,String  doTypeValue ,Integer xseqt ,String buttonType){
+		Categorydetail categorydetail = new Categorydetail() ;
+		categorydetail.setButtonType(buttonType);
+		categorydetail.setId(id);
+		categorydetail.setDoTypeKey(doTypeKey);
+		categorydetail.setDoTypeValue(doTypeValue);
+		categorydetail.setName(name);
+		categorydetail.setXseqt(xseqt);
+		categorydetail.setGmtModify(new Date());
+		categoryDetailDao.update(categorydetail);
+	}
+	
 	
 	public List<Category> queryCategory(Map<String,Object> params){
 		return categoryDao.queryCategory(params);

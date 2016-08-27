@@ -22,6 +22,10 @@ public class CategoryDetailDao {
 	}
 	
 	
+	public void update(Categorydetail record){
+		categorydetailMapper.updateByPrimaryKey(record);
+	}
+	
 	public List<Categorydetail> queryCategoryDetail(Map<String, Object> map){
 		return 	categorydetailMapper.queryCategoryDetail(map);
 	}
