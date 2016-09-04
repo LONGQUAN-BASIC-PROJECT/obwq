@@ -39,16 +39,24 @@ public class DingIndex {
 
 	@ResponseBody
 	@RequestMapping(value = "/queryCategory", method = RequestMethod.POST)
-	public Object queryCategory(HttpServletRequest request) {
+	public Object queryCategoryForPc(HttpServletRequest request) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		List<Category> cateList = categoryService.queryCategory(map);
 		map.put("data", cateList);
 		map.put("success", true);
-		map.put("totalRows", 50);
+		map.put("totalRows", cateList.size());
 		map.put("curPage", 1);
 
 		return map ;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/queryCategory_app", method = RequestMethod.POST)
+	public Object queryCategoryForApp(HttpServletRequest request) {
+		return categoryService.queryCategory(new HashMap<String, Object>());
+	}
+	
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "/queryCategoryDetail", method = RequestMethod.POST)
