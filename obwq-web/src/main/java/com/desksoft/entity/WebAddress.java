@@ -6,7 +6,7 @@ import java.util.Date;
  * 网站实体
  * @author Forever
  */
-public class WebAddress  implements Entity{
+public class WebAddress {
 	
 	private static final long serialVersionUID = 307709683013022329L;
 

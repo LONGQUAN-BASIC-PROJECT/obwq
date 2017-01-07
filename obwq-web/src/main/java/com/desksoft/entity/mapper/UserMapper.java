@@ -2,8 +2,9 @@ package com.desksoft.entity.mapper;
 
 import java.util.Map;
 
+import cn.obwq.entity.User;
+
 import com.desksoft.dao.SqlMapper;
-import com.desksoft.entity.User;
 
 public interface UserMapper  extends SqlMapper  {
 

@@ -6,10 +6,10 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.obwq.entity.User;
 import cn.obwq.util.MD5;
 
 import com.desksoft.dao.UserDao;
-import com.desksoft.entity.User;
 
 /**
  * @author forever

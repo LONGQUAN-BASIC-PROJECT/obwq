@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.desksoft.entity.mapper.ArticleMapper">
+
+	<resultMap id="BaseResultMap" type="cn.obwq.entity.Article">
+		<id column="a_id" property="id" jdbcType="DECIMAL" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="group_id" property="groupId" jdbcType="DECIMAL" />
+		<result column="praise" property="praiseCount" jdbcType="DECIMAL" />
+		<result column="comment" property="commentCount" jdbcType="DECIMAL" />
+		<result column="collection" property="collectionCount"	jdbcType="DECIMAL" />
+		<result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+		<result column="gmt_modify" property="getModify" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		a_id,title, url,praise,group_id , comment,collection , gmt_create, gmt_modify
+  </sql>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_article
+		where id = #{id,jdbcType=DECIMAL}
+  </delete>
+
+	<insert id="insert" parameterType="cn.obwq.entity.Article">
+		insert into t_article
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				a_id,
+      		</if>
+			<if test="title != null">
+				title,
+     		 </if>
+			<if test="url != null">
+				url,
+     		 </if>
+     		 <if test="groupId != null">
+				group_id,
+     		 </if>
+			<if test="praiseCount != null">
+				praise,
+     		 </if>
+			<if test="commentCount != null">
+				comment,
+      		</if>
+			<if test="collectionCount != null">
+				collection,
+      		</if>
+			<if test="gmtCreate != null">
+				gmt_create,
+      		</if>
+			<if test="getModify != null">
+				gmt_modify,
+      		</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+     		 </if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+     		 </if>
+			<if test="url != null">
+				#{url,jdbcType=VARCHAR},
+     		 </if>
+     		 <if test="groupId != null">
+				#{groupId,jdbcType=VARCHAR},
+     		 </if>
+			<if test="praiseCount != null">
+				#{praiseCount,jdbcType=DECIMAL},
+      		</if>
+			<if test="commentCount != null">
+				#{commentCount,jdbcType=DECIMAL},
+     		 </if>
+			<if test="collectionCount != null">
+				#{collectionCount,jdbcType=DECIMAL},
+      		</if>
+			<if test="gmtCreate != null">
+				#{gmtCreate,jdbcType=TIMESTAMP},
+     		 </if>
+			<if test="getModify != null">
+				#{getModify,jdbcType=TIMESTAMP},
+     		 </if>
+
+		</trim>
+	</insert>
+
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"	parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_article
+		where a_id = #{id,jdbcType=DECIMAL}
+	</select>
+
+
+	<select id="queryArticleCount" resultType="java.lang.Integer"	parameterType="cn.obwq.entity.Article">
+		select count(0) from t_article where group_id= #{groupId} and url= #{url}
+	</select>
+
+	<select id="queryArticleCountByGroupId" resultType="java.lang.Integer" parameterType="java.lang.Long">
+		select count(0) from t_article where group_id= #{groupId} 
+	</select>
+
+	<select id="queryArticleByGroup" resultMap="BaseResultMap"	parameterType="java.util.Map">
+		select 
+			<include refid="Base_Column_List" />
+		from t_article where group_id = #{groupId} order by gmt_create desc limit #{offset} ,#{pageSize} 
+	</select>
+
+
+</mapper>

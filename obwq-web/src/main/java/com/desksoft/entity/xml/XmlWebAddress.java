@@ -2,13 +2,11 @@ package com.desksoft.entity.xml;
 
 import java.util.Date;
 
-import com.desksoft.entity.Entity;
-
 /**
  * 网站实体
  * @author Forever
  */
-public class XmlWebAddress  implements Entity{
+public class XmlWebAddress {
 	
 	private static final long serialVersionUID = 307709683013022329L;
 

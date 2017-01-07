@@ -7,8 +7,9 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
 
+import cn.obwq.entity.User;
+
 import com.desksoft.common.BaseDao;
-import com.desksoft.entity.User;
 import com.desksoft.entity.mapper.UserMapper;
 
 

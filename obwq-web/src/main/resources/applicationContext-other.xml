@@ -17,10 +17,8 @@
 	
 	<bean id="lf" class="com.desksoft.common.LoadWebAddressFromXml"></bean>
 	<bean id="en" class="com.desksoft.common.LoadEnFromJson"></bean>
+	<bean id="loadQue" class="com.desksoft.craw.LoadCrawQunen" init-method="init"></bean>
 	
-	<!-- <bean class="com.desksoft.common.ReloadHotData" init-method="init">
-		<property name="planDetailService" ref="planDetailService"></property>
-	</bean> -->
 
 
 	<bean id="mapHandler" class="java.util.HashMap">
@@ -41,5 +39,21 @@
 			</map>
 		</constructor-arg>
 	</bean>
+
+
+	<bean id="handlerMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				 <entry key="ZHIHU">
+                  	<bean class="com.desksoft.handler.impl.ZhihuParseImpl"></bean>
+              	 </entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+
+
+
+
 
 </beans>

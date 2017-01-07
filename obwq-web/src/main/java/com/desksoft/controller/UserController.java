@@ -1,6 +1,5 @@
 package com.desksoft.controller;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,12 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.obwq.entity.User;
 import cn.obwq.result.SingleResult;
-import cn.obwq.util.UUIDGenerator;
 
-import com.desksoft.entity.Comment;
-import com.desksoft.entity.User;
-import com.desksoft.service.CommentService;
 import com.desksoft.service.UserService;
 
 
@@ -33,8 +29,6 @@ public class UserController extends AbstractController {
 	@Autowired
 	UserService userService ;
 	
-	@Autowired
-	CommentService  commentService ;
 	/**
 	 * 只返回userId，而不是对应的开放平台的ID，因为考虑到后期会推出自己的帐号体系
 	 * @param request
@@ -150,33 +144,6 @@ public class UserController extends AbstractController {
 			
 			User user = userService.getUserById(userId);
 			result.setResult(user);
-		}catch (Exception e) {
-			loger.error("updateUser@UserController,message={}",new Object[]{e.getMessage()});
-			result.setSuccess(Boolean.FALSE);
-			result.setResultDesc(e.getMessage());
-		}
-		return result;
-	}
-	/**
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value="/submit_user_commit",method=RequestMethod.POST)
-	@ResponseBody
-	public Object submitUserCommit(HttpServletRequest request,String userId,String desc) throws Exception{
-		SingleResult<User> result = new SingleResult<User>();
-		try {
-			if(StringUtils.isEmpty(desc)){
-				result.setSuccess(Boolean.FALSE);
-				return result ;
-			}
-			Comment comment = new Comment() ;
-			comment.setcId(UUIDGenerator.get());
-			comment.setUserId(userId);
-			comment.setDesc(desc);
-			comment.setGmtModifidy(new Date());
-			comment.setGmtCreate(new Date());
-			commentService.insertComment(comment);
 		}catch (Exception e) {
 			loger.error("updateUser@UserController,message={}",new Object[]{e.getMessage()});
 			result.setSuccess(Boolean.FALSE);

@@ -1,70 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xmlns:aop="http://www.springframework.org/schema/aop"
- xmlns:context="http://www.springframework.org/schema/context"
- xmlns:p="http://www.springframework.org/schema/p" 
- xmlns:tx="http://www.springframework.org/schema/tx"
- xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
- xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
   http://www.springframework.org/schema/beans/spring-beans.xsd
   http://www.springframework.org/schema/aop 
   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
   http://www.springframework.org/schema/context 
   http://www.springframework.org/schema/context/spring-context-3.0.xsd
   http://www.springframework.org/schema/tx 
-  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd" default-lazy-init="true">
-	
-	
-	<bean id="languageMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.desksoft.entity.mapper.LanguageMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
-	
-	
+  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+	default-lazy-init="true">
+
 	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.desksoft.entity.mapper.UserMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
-	
-	<bean id="categoryMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.desksoft.entity.mapper.CategoryMapper" />
+	</bean>
+
+
+	<bean id="articleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.desksoft.entity.mapper.ArticleMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
-	
-	
-	<bean id="categorydetailMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.desksoft.entity.mapper.CategorydetailMapper" />
+	</bean>
+
+	<bean id="agroupMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.desksoft.entity.mapper.AgroupMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
-	
-	<bean id="planMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.desksoft.entity.mapper.PlanMapper" />
+	</bean>
+
+
+	<bean id="userArticleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.desksoft.entity.mapper.UserArticleMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
+	</bean>
 	
-	<bean id="userPlanMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.desksoft.entity.mapper.UserPlanMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
 	
-	<bean id="planDetailMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.desksoft.entity.mapper.PlanDetailMapper" />
+	<bean id="userGroupMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.desksoft.entity.mapper.UserGroupMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
-	<bean id="commentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.desksoft.entity.mapper.CommentMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
-	
-	<bean id="praiseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.desksoft.entity.mapper.PraiseMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
-	
-	<bean id="evaluateMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.desksoft.entity.mapper.EvaluateMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>	
-	
+	</bean>
+
+
 </beans>

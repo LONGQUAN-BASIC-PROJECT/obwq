@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.desksoft.entity.mapper.UserArticleMapper" >
+
+  <resultMap id="BaseResultMap" type="cn.obwq.entity.UserArticle" >
+    <id column="ua_id" property="userId" jdbcType="DECIMAL" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="article_id" property="articleId" jdbcType="DECIMAL" />
+        <result column="type" property="type" jdbcType="DECIMAL" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="getModify" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    ua_id,user_id, article_id,type, gmt_create, gmt_modify
+  </sql>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_user_article
+    where ua_id = #{id,jdbcType=DECIMAL}
+  </delete>
+  
+  <insert id="insert" parameterType="cn.obwq.entity.UserArticle" >
+    insert into t_user_article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ua_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+        <if test="type != null" >
+        type,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="getModify != null" >
+        gmt_modify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{user_id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        #{group_id,jdbcType=DECIMAL},
+      </if>
+       <if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="getModify != null" >
+        #{getModify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_article
+    where ua_id = #{id,jdbcType=DECIMAL} 
+  </select>
+ 
+  
+</mapper>
