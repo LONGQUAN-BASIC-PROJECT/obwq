@@ -11,7 +11,7 @@ import org.jsoup.select.Elements;
 
 import cn.obwq.entity.Article;
 
-import com.desksoft.entity.dto.SechCrawDto;
+import cn.obwq.dto.SechCrawDto;
 import com.desksoft.handler.ParseArticlesHandler;
 
 public class ZhihuParseImpl implements ParseArticlesHandler {

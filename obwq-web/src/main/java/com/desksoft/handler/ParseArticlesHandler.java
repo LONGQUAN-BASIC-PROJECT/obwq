@@ -4,7 +4,7 @@ import java.util.List;
 
 import cn.obwq.entity.Article;
 
-import com.desksoft.entity.dto.SechCrawDto;
+import cn.obwq.dto.SechCrawDto;
 
 public interface  ParseArticlesHandler {
 

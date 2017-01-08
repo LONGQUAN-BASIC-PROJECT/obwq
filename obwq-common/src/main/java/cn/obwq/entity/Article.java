@@ -11,7 +11,7 @@ public class Article extends  BaseDo {
 	private String title ;
 	
 	private String url ;
-	
+
 	private Long groupId ;
 	
 	private Long praiseCount ;
@@ -76,5 +76,7 @@ public class Article extends  BaseDo {
 	public void setGroupId(Long groupId) {
 		this.groupId = groupId;
 	}
+
+
 
 }

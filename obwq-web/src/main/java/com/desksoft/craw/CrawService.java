@@ -16,7 +16,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.desksoft.common.constants.AgroupEnum;
 import com.desksoft.dao.AgroupDao;
 import com.desksoft.dao.ArticleDao;
-import com.desksoft.entity.dto.SechCrawDto;
+import cn.obwq.dto.SechCrawDto;
 import com.desksoft.handler.ParseArticlesHandler;
 import com.desksoft.handler.impl.ZhihuParseImpl;
 import com.desksoft.util.CollectionUtil;

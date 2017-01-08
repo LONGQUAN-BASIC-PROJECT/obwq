@@ -20,7 +20,7 @@ import cn.obwq.result.SingleResult;
 
 import com.desksoft.common.constants.AgroupEnum;
 import com.desksoft.craw.CrawService;
-import com.desksoft.entity.dto.SechCrawDto;
+import cn.obwq.dto.SechCrawDto;
 import com.desksoft.service.AgroupService;
 import com.desksoft.service.ArticleService;
 
@@ -41,6 +41,9 @@ public class ArticleController {
 	private ArticleService articleService;
 	@Autowired
 	private AgroupService agroupService;
+
+
+
 
 	@RequestMapping(value = "/craw_article", method = RequestMethod.GET)
 	@ResponseBody

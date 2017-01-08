@@ -1,4 +1,4 @@
-package com.desksoft.entity.dto;
+package cn.obwq.dto;
 
 import java.io.Serializable;
 

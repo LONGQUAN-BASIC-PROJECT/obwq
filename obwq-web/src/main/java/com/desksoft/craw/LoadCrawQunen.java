@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.fastjson.JSONObject;
 import com.desksoft.common.constants.AgroupEnum;
 import com.desksoft.entity.Task;
-import com.desksoft.entity.dto.SechCrawDto;
+import cn.obwq.dto.SechCrawDto;
 import com.desksoft.util.CollectionUtil;
 
 public class LoadCrawQunen {
