@@ -52,9 +52,9 @@ public class ArticleController {
 		SingleResult<String> result = new SingleResult<String>();
 		try {
 			SechCrawDto sec = new SechCrawDto();
-			sec.setGroupType(AgroupEnum.ZHIHU.name());
+			sec.setName(AgroupEnum.ZHIHU.name());
 			sec.setUrl("http://daily.zhihu.com/");
-			sec.setGroupId(1l);
+			sec.setId(1l);
 			crawService.crawFromWeb(sec);
 			result.setResult("爬取成功");
 		}catch (Exception e) {

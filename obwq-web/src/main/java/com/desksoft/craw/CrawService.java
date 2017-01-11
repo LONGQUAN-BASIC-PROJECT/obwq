@@ -44,13 +44,13 @@ public class CrawService {
 				return false; //进入重试队列
 			}
 			
-			ParseArticlesHandler handler = handlerMap.get(sechCrawDto.getGroupType());
+			ParseArticlesHandler handler = handlerMap.get(sechCrawDto.getName());
 			List<Article> listArt = handler.parser(pageContent,sechCrawDto);
 			if(CollectionUtil.isEmpty(listArt)){
 				return false;//进入重试队列
 			}
 			for(Article article : listArt){
-				article.setGroupId(sechCrawDto.getGroupId());
+				article.setGroupId(sechCrawDto.getId());
 				saveArticle(article);
 			}
 			return true ;
@@ -91,7 +91,7 @@ public class CrawService {
 		
 		
 		SechCrawDto sec = new SechCrawDto () ;
-		sec.setGroupType(AgroupEnum.ZHIHU.name());
+		sec.setName(AgroupEnum.ZHIHU.name());
 		sec.setUrl("http://daily.zhihu.com/");
 		
 		

@@ -1,5 +1,7 @@
 package cn.obwq.dto;
 
+import cn.obwq.entity.Agroup;
+
 import java.io.Serializable;
 
 /**
@@ -7,38 +9,17 @@ import java.io.Serializable;
  * @author guoxing.zgx
  *
  */
-public class SechCrawDto implements Serializable {
+public class SechCrawDto extends Agroup {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4603847842751475734L;
 
-	private Long groupId ;
-	
-	private String groupType ;
-	
-	private String desc ;
-	
-	private String url ;
 
 	private Integer retryCount = 0 ;
 	
-	public String getDesc() {
-		return desc;
-	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
 
 	public Integer getRetryCount() {
 		return retryCount;
@@ -48,23 +29,6 @@ public class SechCrawDto implements Serializable {
 		this.retryCount = retryCount;
 	}
 
-	public String getGroupType() {
-		return groupType;
-	}
 
-	public void setGroupType(String groupType) {
-		this.groupType = groupType;
-	}
-
-	public Long getGroupId() {
-		return groupId;
-	}
-
-	public void setGroupId(Long groupId) {
-		this.groupId = groupId;
-	}
-	
-	
-	
 	
 }

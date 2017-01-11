@@ -35,20 +35,18 @@ public class TestController {
 			List<SechCrawDto> list = new ArrayList<SechCrawDto>();
 
 			SechCrawDto sec = new SechCrawDto();
-			sec.setGroupType(AgroupEnum.ZHIHU.name());
+			sec.setName(AgroupEnum.ZHIHU.name());
 			sec.setUrl("http://daily.zhihu.com/");
-			sec.setGroupId(1l);
+			sec.setId(1l);
 
 
 			SechCrawDto sec2 = new SechCrawDto();
-			sec2.setGroupType(AgroupEnum.ZHIHU.name());
+			sec2.setName(AgroupEnum.ZHIHU.name());
 			sec2.setUrl("http://daily.zhihu.com/");
-			sec2.setGroupId(1l);
+			sec2.setId(1l);
 
 			list.add(sec);
 			list.add(sec2);
-
-
 
 			result.setResult(list);
 		}catch (Exception e) {
@@ -66,9 +64,9 @@ public class TestController {
 		SingleResult<SechCrawDto> result = new SingleResult<SechCrawDto>();
 		try {
 			SechCrawDto sec = new SechCrawDto();
-			sec.setGroupType(AgroupEnum.ZHIHU.name());
+			sec.setName(AgroupEnum.ZHIHU.name());
 			sec.setUrl("http://daily.zhihu.com/");
-			sec.setGroupId(1l);
+			sec.setId(1l);
 			result.setResult(sec);
 		}catch (Exception e) {
 			result.setSuccess(Boolean.FALSE);
