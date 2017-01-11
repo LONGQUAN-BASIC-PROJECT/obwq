@@ -14,13 +14,6 @@ import java.util.Map;
  */
 public class Agroup extends BaseDo {
 
-/*
-    url	                varchar(2000),
-    logo	                varchar(2000),
-    type	                numeric(18),
-    acount	            numeric(18),
-    */
-
     private static final long serialVersionUID = 8916129837966410798L;
 
     private Long id;
@@ -33,7 +26,7 @@ public class Agroup extends BaseDo {
 
     private String logo ;
 
-    private Long account ;
+    private Long acount ;
 
     /**
      * 1、私有的
@@ -141,11 +134,11 @@ public class Agroup extends BaseDo {
         this.logo = logo;
     }
 
-    public Long getAccount() {
-        return account;
+    public Long getAcount() {
+        return acount;
     }
 
-    public void setAccount(Long account) {
-        this.account = account;
+    public void setAcount(Long account) {
+        this.acount = account;
     }
 }

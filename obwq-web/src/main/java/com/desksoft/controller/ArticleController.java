@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.desksoft.util.CollectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,8 +93,6 @@ public class ArticleController {
 
 	/**
 	 * @param request
-	 * @param type
-	 *            圈子类型
 	 * @param pageSize
 	 * @param currentPage
 	 * @return
@@ -122,6 +121,14 @@ public class ArticleController {
 				return pageResult;
 			}
 			List<Article> listArticle = articleService.queryArticleByGroup(groupId, currentPage, pageSize);
+			if(CollectionUtil.isNotEmpty(listArticle)){
+				for(Article ae : listArticle){
+					ae.setGroupName(agroup.getName());
+					ae.setGroupUrl(agroup.getUrl());
+					ae.setGroupLogo(agroup.getLogo());
+				}
+			}
+
 			pageResult.setResult(listArticle);
 			pageResult.setPageSize(pageSize);
 			pageResult.setTotalSize(pageCount);

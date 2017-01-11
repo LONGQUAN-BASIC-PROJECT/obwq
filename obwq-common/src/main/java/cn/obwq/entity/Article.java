@@ -20,6 +20,12 @@ public class Article extends  BaseDo {
 	
 	private Long collectionCount ;
 
+	private String groupName ;
+
+	private String groupUrl ;
+
+	private String groupLogo ;
+
 	public Long getId() {
 		return id;
 	}
@@ -77,6 +83,27 @@ public class Article extends  BaseDo {
 		this.groupId = groupId;
 	}
 
+	public String getGroupName() {
+		return groupName;
+	}
 
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
 
+	public String getGroupUrl() {
+		return groupUrl;
+	}
+
+	public void setGroupUrl(String groupUrl) {
+		this.groupUrl = groupUrl;
+	}
+
+	public String getGroupLogo() {
+		return groupLogo;
+	}
+
+	public void setGroupLogo(String groupLogo) {
+		this.groupLogo = groupLogo;
+	}
 }

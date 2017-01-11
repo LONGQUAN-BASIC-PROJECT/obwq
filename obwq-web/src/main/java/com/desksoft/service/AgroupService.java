@@ -7,6 +7,8 @@ import cn.obwq.entity.Agroup;
 
 import com.desksoft.dao.AgroupDao;
 
+import java.util.List;
+
 /**
  * @author forever
  *
@@ -21,5 +23,8 @@ public class AgroupService   {
     	return agroupDao.selectById(gid);
     }
 
-    	
+
+	public List<Agroup> selectAllByType() {
+		return agroupDao.selectAllByType();
+	}
 }
