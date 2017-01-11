@@ -1,9 +1,12 @@
 package com.desksoft.craw;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,23 +16,28 @@ import com.desksoft.common.constants.AgroupEnum;
 import com.desksoft.entity.Task;
 import cn.obwq.dto.SechCrawDto;
 import com.desksoft.util.CollectionUtil;
+import org.springframework.scheduling.quartz.QuartzJobBean;
 
-public class LoadCrawQunen {
+public class LoadCrawQunen extends QuartzJobBean {
 
 	public static Logger loger = LoggerFactory.getLogger(LoadCrawQunen.class);
 
 	private LinkedBlockingQueue<SechCrawDto> taskQue = new LinkedBlockingQueue<SechCrawDto>(200) ; 
 	
 	@Autowired
-	private CrawService crawService; 
-	
-	
+	private CrawService crawService;
+
+
+	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
+		initTask();
+	}
+
 	public void initTask(){
 		if(taskQue.size() != 0){
 			loger.error("wran@task_has_not_finish,taskLength=" + taskQue.size()+",task_has_not_started");
 			return ;
 		}
-		resetTask();
+		//resetTask();
 		List<Task> taskList = fetchTask() ;
 		if(CollectionUtil.isEmpty(taskList)){
 			loger.error("error@initTask,taskList_is_empty,task_has_not_started");

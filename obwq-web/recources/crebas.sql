@@ -25,6 +25,8 @@ create table t_agroup
    g_id int      auto_increment  primary key , 
    name	            varchar(2000),
    descr	            varchar(2000),
+   url	                varchar(2000),
+   logo	                varchar(2000),
    type	                numeric(18),
    acount	            numeric(18),
    gmt_create           datetime,
@@ -32,6 +34,8 @@ create table t_agroup
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+
+insert into t_agroup(g_id,name,descr,url,logo,type,acount,gmt_create,gmt_modify) values(1,'ZHIHU','this is zhihu','http://www.baidu.com','http://www.baidu.com',1,0,now(),now()) ;
 
 
 

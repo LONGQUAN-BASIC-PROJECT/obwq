@@ -49,10 +49,40 @@ public class HttpClientUtil {
 
 	public static String getHttpContent(String url) {
 		try {
-			return run(url);
+			String str = null ;
+			if(url.startsWith("https:")){
+				str = 	runHttps(url);
+			}else{
+				str =  run(url);
+			}
+			return str ;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		return null ;
+	}
+
+
+	private static String runHttps(String url){
+		try {
+			SSLClient sslclient = SSLClient.getClient() ;
+
+			HttpGet httpGet = new HttpGet(url);
+			// 执行get请求
+			HttpResponse httpResponse = sslclient.execute(httpGet);
+			// 获取响应消息实体
+			HttpEntity entity = httpResponse.getEntity();
+			// 判断响应实体是否为空
+			if (entity != null) {
+				return EntityUtils.toString(entity);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+
+		}
+
 		return null ;
 	}
 
