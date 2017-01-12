@@ -10,11 +10,13 @@ import cn.obwq.entity.Agroup;
 import cn.obwq.util.DateUtil;
 import cn.obwq.util.StringUtils;
 import com.desksoft.service.AgroupService;
+import com.desksoft.util.WebContextUtil;
 import org.apache.commons.beanutils.BeanUtils;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSONObject;
@@ -22,7 +24,9 @@ import com.desksoft.common.constants.AgroupEnum;
 import cn.obwq.dto.SechCrawDto;
 import com.desksoft.util.CollectionUtil;
 import org.springframework.scheduling.quartz.QuartzJobBean;
+import org.springframework.stereotype.Service;
 
+@Service(value="loadCrawQunen")
 public class LoadCrawQunen extends QuartzJobBean {
 
 	public static Logger loger = LoggerFactory.getLogger(LoadCrawQunen.class);
@@ -40,6 +44,14 @@ public class LoadCrawQunen extends QuartzJobBean {
 	}
 
 	public void initTask(){
+		if(crawService == null){
+			crawService = (CrawService)WebContextUtil.getApplicationContext().getBean("crawService");
+		}
+
+		if(agroupService == null){
+			agroupService = (AgroupService)WebContextUtil.getApplicationContext().getBean("agroupService");
+		}
+
 		if(taskQue.size() != 0){
 			loger.error("wran@task_has_not_finish,taskLength=" + taskQue.size()+",task_has_not_started");
 			return ;
