@@ -11,20 +11,26 @@ import java.util.List;
 
 /**
  * @author forever
- *
  */
-@Service(value="agroupService")
-public class AgroupService   {
+@Service(value = "agroupService")
+public class AgroupService {
 
-	@Autowired
-	private AgroupDao  agroupDao;
-	
-    public Agroup selectById(Long gid){
-    	return agroupDao.selectById(gid);
+    @Autowired
+    private AgroupDao agroupDao;
+
+    public Agroup selectById(Long gid) {
+        return agroupDao.selectById(gid);
     }
 
 
-	public List<Agroup> selectAllByType() {
-		return agroupDao.selectAllByType();
-	}
+    public List<Agroup> selectAllByType() {
+        return agroupDao.selectAllByType();
+    }
+
+
+    public void updateByPrimaryKeySelective(Agroup agroup){
+        agroupDao.updateByPrimaryKeySelective(agroup);
+    }
+
+
 }

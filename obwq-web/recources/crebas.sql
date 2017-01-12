@@ -28,7 +28,8 @@ create table t_agroup
    url	                varchar(2000),
    logo	                varchar(2000),
    type	                numeric(18),
-   acount	            numeric(18),
+   acount	              numeric(18),
+   feature	                varchar(2000),
    gmt_create           datetime,
    gmt_modify           datetime
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

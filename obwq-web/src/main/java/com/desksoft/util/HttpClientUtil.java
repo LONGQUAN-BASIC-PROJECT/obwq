@@ -1,11 +1,5 @@
 package com.desksoft.util;
 
-import java.io.IOException;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-
-import okhttp3.Response;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,9 +8,9 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
-public class HttpClientUtil {
+import java.io.IOException;
 
-	static OkHttpClient client = new OkHttpClient();
+public class HttpClientUtil {
 
 	public static String getHttpContent_bak(String url) {
 		// 创建HttpClientBuilder
@@ -53,7 +47,7 @@ public class HttpClientUtil {
 			if(url.startsWith("https:")){
 				str = 	runHttps(url);
 			}else{
-				str =  run(url);
+				str =  getHttpContent_bak(url);
 			}
 			return str ;
 		}catch(Exception e){
@@ -86,23 +80,4 @@ public class HttpClientUtil {
 		return null ;
 	}
 
-	private static String run(String url) throws IOException {
-		
-	    Request request = new Request.Builder()
-	        .url(url)
-	        .build();
-
-		Response response = client.newCall(request).execute();
-//	    try (Response response = client.newCall(request).execute()) {
-//	      return response.body().string();
-//	    }
-
-		return response.body().string();
-	  }
-
-	public static void main(String args[]) throws Exception {
-		String url = "https://raw.githubusercontent.com/square/okhttp/master/samples/guide/src/main/java/okhttp3/guide/GetExample.java" ;
-		String u = HttpClientUtil.run(url) ;
-		System.out.println(u);
-	}
 }

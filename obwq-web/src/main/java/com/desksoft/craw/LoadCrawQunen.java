@@ -64,18 +64,21 @@ public class LoadCrawQunen extends QuartzJobBean {
 				continue ;
 			}
 			Boolean flag = crawService.crawFromWeb(cdto);
+			if(flag == null){
+				continue;
+			}
 			if(!flag){
 				cdto.setRetryCount(cdto.getRetryCount() + 1) ;
 				taskQue.add(cdto);
-			}else {
+			}else  {
 				//更新上次爬取时间
 				cdto.addFeature("last_craw_time", DateUtil.getDateString(new Date(), DATE_FORMAT.yyyy_mm_dd_hh_mm_ss));
 				Agroup result = new Agroup();
 				try {
 					BeanUtils.copyProperties(result,cdto);
 				}catch (Exception e){}
-
-				//agroupService.update(result);
+				result.setGetModify(new Date());
+				agroupService.updateByPrimaryKeySelective(result);
 			}
 		}
 		
@@ -89,14 +92,23 @@ public class LoadCrawQunen extends QuartzJobBean {
 	
 	
 	public List<Agroup> fetchTask(){
-		return new ArrayList<Agroup>();
+
+		List<Agroup> list =  agroupService.selectAllByType();
+		if (CollectionUtil.isEmpty(list)){
+			return new ArrayList<Agroup>();
+		}
+		for(Agroup ag : list){
+			ag.addFeature("inter_time","1200");
+		}
+		return list ;
+
 	}
 	
 	private void converTaskToQue(List<Agroup> taskList) {
 		if(CollectionUtil.isEmpty(taskList)){
 			return ;
 		}
-		
+
 		for(Agroup task : taskList){
 			//判断两次爬取间隔
 			//如果太近就不爬了
@@ -117,15 +129,29 @@ public class LoadCrawQunen extends QuartzJobBean {
 				}
 			}
 			SechCrawDto sto = new SechCrawDto();
+
+			/*
 			AgroupEnum agm = AgroupEnum.getByType(task.getName());
 			if(agm == null){
 				continue ;
 			}
+
 			try {
 				BeanUtils.copyProperties(sto,task);
 			}catch (Exception e){
 
 			}
+			*/
+			sto.setId(task.getId());
+			sto.setName(task.getName());
+			sto.setDescr(task.getDescr());
+			sto.setLogo(task.getLogo());
+			sto.setAcount(task.getAcount());
+			sto.setFeature(task.getFeature());
+			sto.setType(task.getType());
+			sto.setGmtCreate(task.getGmtCreate());
+			sto.setGetModify(task.getGetModify());
+			sto.setUrl(task.getUrl());
 
 			taskQue.add(sto);
 		}

@@ -28,4 +28,8 @@ public class AgroupDao extends BaseDao {
     	return agroupMapper.selectAllByType();
 	}
 
+	public void updateByPrimaryKeySelective(Agroup agroup){
+    	agroupMapper.updateByPrimaryKeySelective(agroup);
+	}
+
 }

@@ -39,12 +39,16 @@ public class CrawService {
 	
 	public Boolean crawFromWeb(SechCrawDto sechCrawDto){
 		try {
+
+			ParseArticlesHandler handler = handlerMap.get(sechCrawDto.getName());
+			if(handler == null){
+				return null ;
+			}
 			String pageContent = HttpClientUtil.getHttpContent(sechCrawDto.getUrl());
 			if(StringUtils.isBlank(pageContent)){
 				return false; //进入重试队列
 			}
-			
-			ParseArticlesHandler handler = handlerMap.get(sechCrawDto.getName());
+
 			List<Article> listArt = handler.parser(pageContent,sechCrawDto);
 			if(CollectionUtil.isEmpty(listArt)){
 				return false;//进入重试队列

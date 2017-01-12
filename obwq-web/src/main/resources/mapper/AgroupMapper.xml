@@ -9,15 +9,17 @@
     <result column="descr" property="descr" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="logo" property="logo" jdbcType="VARCHAR" />
-    <result column="acount" property="account" jdbcType="DECIMAL" />
+    <result column="acount" property="acount" jdbcType="DECIMAL" />
 
     <result column="type" property="type" jdbcType="DECIMAL" />
+    <result column="feature" property="feature" jdbcType="VARCHAR" />
+
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modify" property="getModify" jdbcType="TIMESTAMP" />
   </resultMap>
   
   <sql id="Base_Column_List" >
-       g_id,name, descr,url,logo,acount,type , gmt_create, gmt_modify
+       g_id,name, descr,url,logo,acount,type ,feature, gmt_create, gmt_modify
   </sql>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
@@ -80,11 +82,46 @@
 
 
 
-  <select id="selectAllByType" resultType="cn.obwq.entity.Agroup">
+  <select id="selectAllByType" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from t_agroup
     where type = 1
   </select>
-  
+
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="cn.obwq.entity.Agroup" >
+    update t_agroup
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null" >
+        descr = #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="acount != null" >
+        acount = #{acount,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="feature != null" >
+        feature = #{feature,jdbcType=VARCHAR},
+      </if>
+      <if test="getModify != null" >
+        gmt_modify = #{getModify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where g_id = #{id,jdbcType=DECIMAL}
+  </update>
+
+
+
 </mapper>

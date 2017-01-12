@@ -3,7 +3,7 @@ package com.desksoft.common.constants;
 public enum AgroupEnum {
 
 	
-	ZHIHU(1l,"zhihu","知乎");
+	ZHIHU(1l,"ZHIHU","知乎");
 
 	private Long id ;
 	
@@ -43,7 +43,7 @@ public enum AgroupEnum {
 	
 	public static AgroupEnum getByType(String type){
 		for(AgroupEnum an : AgroupEnum.values()){
-			if(an.name.equals(type)){
+			if(an.getName().equals(type)){
 				return an ;
 			}
 		}

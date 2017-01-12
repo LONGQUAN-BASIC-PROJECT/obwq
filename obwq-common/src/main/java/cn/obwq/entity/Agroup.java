@@ -14,6 +14,8 @@ import java.util.Map;
  */
 public class Agroup extends BaseDo {
 
+
+
     private static final long serialVersionUID = 8916129837966410798L;
 
     private Long id;
@@ -140,5 +142,21 @@ public class Agroup extends BaseDo {
 
     public void setAcount(Long account) {
         this.acount = account;
+    }
+
+    public String getFeature() {
+        return feature;
+    }
+
+    public void setFeature(String feature) {
+        this.feature = feature;
+    }
+
+    public Map<String, String> getAttr() {
+        return attr;
+    }
+
+    public void setAttr(Map<String, String> attr) {
+        this.attr = attr;
     }
 }
