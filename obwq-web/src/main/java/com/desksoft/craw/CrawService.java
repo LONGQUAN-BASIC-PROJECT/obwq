@@ -66,7 +66,7 @@ public class CrawService {
 	
 	
 	
-	private void saveArticle(Article article) {
+	private synchronized void saveArticle(Article article) {
 //		Agroup agroup = agroupDao.selectByPrimaryKey(article.getGroupId());
 //		//TODO 是否存在文章
 //		if(agroup == null){
