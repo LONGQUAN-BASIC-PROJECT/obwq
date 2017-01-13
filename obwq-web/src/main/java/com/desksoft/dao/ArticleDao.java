@@ -27,7 +27,7 @@ public class ArticleDao extends BaseDao {
 	
 	public Boolean isExits(Article article){
 		Integer count = articleMapper.queryArticleCount(article);
-		return count != 0 ;
+		return count == 0 ;
 	}
 	
 	
