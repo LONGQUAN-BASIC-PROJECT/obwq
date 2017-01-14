@@ -34,7 +34,7 @@ public class LoadEnFromJson implements InitializingBean {
 	private void startSchedule(){
 		timer.schedule(new TimerTask() {
 			public void run() {
-				System.out.println("------start schedule---------");
+				System.out.println("------start schedule en word---------");
 				String xmlDataPath = getFilePath() ;
 				File file = new File(xmlDataPath);
 				long lf = file.lastModified();
