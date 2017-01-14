@@ -34,7 +34,18 @@ public class ArticleService   {
 		return articleDao.queryArticleByGroup(params);
 	}
 
+	public Integer queryCrawArticleCount(){
+		return articleDao.queryCrawArticleCount();
+	}
+
 	public Integer queryArticleCountByGroupId(Long groupId){
 		return articleDao.queryArticleCountByGroupId(groupId);
+	}
+
+	public List<Article> queryHotArticleByGroup(Integer currnetPage, Integer pageSize) {
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("pageSize", pageSize);
+		params.put("offset", (currnetPage -1 ) * pageSize);
+		return articleDao.queryHotArticle(params);
 	}
 }

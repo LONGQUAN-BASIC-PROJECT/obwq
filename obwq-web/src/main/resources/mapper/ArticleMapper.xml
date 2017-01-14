@@ -103,11 +103,31 @@
 		select count(0) from t_article where group_id= #{groupId} 
 	</select>
 
+
+	<select id="queryCrawArticleCount" resultType="java.lang.Integer">
+		select count(0)  from t_article ta ,t_agroup tg where ta.group_id = tg.g_id and tg.type = 1
+	</select>
+
+
 	<select id="queryArticleByGroup" resultMap="BaseResultMap"	parameterType="java.util.Map">
 		select 
 			<include refid="Base_Column_List" />
 		from t_article where group_id = #{groupId} order by gmt_create desc limit #{offset} ,#{pageSize} 
 	</select>
+
+
+	<select id="queryHotArticle" resultMap="BaseResultMap"	parameterType="java.util.Map">
+		select
+				ta.a_id,ta.title, ta.url,ta.praise,ta.group_id , ta.comment,ta.collection , ta.gmt_create, ta.gmt_modify
+
+		from t_article ta,t_agroup tp where tp.type = 1 and ta.group_id = tp.g_id  order by gmt_create desc limit #{offset} ,#{pageSize}
+	</select>
+
+
+
+
+
+
 
 
 </mapper>

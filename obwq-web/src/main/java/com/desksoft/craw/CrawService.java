@@ -67,20 +67,20 @@ public class CrawService {
 	
 	
 	private synchronized void saveArticle(Article article) {
-//		Agroup agroup = agroupDao.selectByPrimaryKey(article.getGroupId());
-//		//TODO 是否存在文章
-//		if(agroup == null){
-//			throw new IllegalArgumentException("group 不存在");
-//		}
-		Boolean isExits = articleDao.isExits(article);
-		if(isExits){
-			return ;
+		try {
+			Boolean isExits = articleDao.isExits(article);
+			if(isExits){
+				return ;
+			}
+			article.setPraiseCount(0l);
+			article.setCommentCount(0l);
+			article.setCollectionCount(0l);
+
+			articleDao.insert(article);
+
+		}catch (Exception e){
+			loger.error("error@save_article_error,do=",JSONObject.toJSONString(article),e);
 		}
-		article.setPraiseCount(0l);
-		article.setCommentCount(0l);
-		article.setCollectionCount(0l);
-		
-		articleDao.insert(article);
 	}
 
 	

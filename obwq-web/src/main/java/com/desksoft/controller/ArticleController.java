@@ -141,4 +141,52 @@ public class ArticleController {
 		return pageResult;
 	}
 
+
+	/**
+	 * @param request
+	 * @param pageSize
+	 * @param currentPage
+	 * @return
+	 */
+	@RequestMapping(value = "/get/articles/hot/{pageSize}/{currentPage}", method = RequestMethod.GET)
+	@ResponseBody
+	public PageResult<List<Article>> readHotArticleBy(HttpServletRequest request,
+													 @PathVariable("pageSize") Integer pageSize,
+													 @PathVariable("currentPage") Integer currentPage) {
+
+		PageResult<List<Article>> pageResult = new PageResult<List<Article>>();
+
+		try {
+			Integer pageCount = articleService.queryCrawArticleCount();
+			if ((currentPage - 1) * pageSize >= pageCount) {
+				pageResult.setSuccess(Boolean.FALSE);
+				pageResult.setResultDesc("has not more data");
+				// 没有更多的数据
+				return pageResult;
+			}
+			List<Article> listArticle = articleService.queryHotArticleByGroup(currentPage, pageSize);
+			if(CollectionUtil.isNotEmpty(listArticle)){
+				for(Article ae : listArticle){
+
+					Agroup agroup = agroupService.selectById(ae.getGroupId());
+					if(agroup != null){
+						ae.setGroupName(agroup.getName());
+						ae.setGroupUrl(agroup.getUrl());
+						ae.setGroupLogo(agroup.getLogo());
+					}
+				}
+			}
+
+			pageResult.setResult(listArticle);
+			pageResult.setPageSize(pageSize);
+			pageResult.setTotalSize(pageCount);
+			pageResult.setTotalPage(Double.valueOf(Math.ceil( pageCount *1.0 / pageSize)).intValue());
+		} catch (Exception e) {
+			loger.error("updateUser@readHotArticle,pageSize={},currentPage={},message={}",new Object[]{pageSize,currentPage,e.getMessage()});
+			pageResult.setSuccess(Boolean.FALSE);
+			pageResult.setResultDesc(e.getMessage());
+		}
+		return pageResult;
+	}
+
 }

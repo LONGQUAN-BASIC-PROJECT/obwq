@@ -21,6 +21,9 @@ public interface ArticleMapper  extends SqlMapper  {
 	
 	public List<Article> queryArticleByGroup(Map<String,Object> params);
 
+	Integer queryCrawArticleCount();
+
+	public List<Article> queryHotArticle(Map<String, Object> params);
 }
 
 

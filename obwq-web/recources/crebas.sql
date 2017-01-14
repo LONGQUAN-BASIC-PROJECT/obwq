@@ -43,18 +43,18 @@ insert into t_agroup(g_id,name,descr,url,logo,type,acount,gmt_create,gmt_modify)
 create table t_article
 (
    a_id                 int  auto_increment primary key  ,
-   title	            varchar(2000),
-   url	                varchar(2000),
+   title	            varchar(200),
+   url	                varchar(150),
      group_id   numeric(18),
    praise	            numeric(18),
    comment	            numeric(18),
    collection           numeric(18),
    gmt_create           datetime,
    gmt_modify           datetime
-   
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+ALTER TABLE t_article ADD CONSTRAINT PK_t_article PRIMARY  KEY( url,group_id);
 
 
 create table t_user_agroup

@@ -56,14 +56,23 @@ public class LoadCrawQunen extends QuartzJobBean {
 			loger.error("wran@task_has_not_finish,taskLength=" + taskQue.size()+",task_has_not_started");
 			return ;
 		}
+
+		loger.error("start_to_craw_something");
+
 		List<Agroup> taskList = fetchTask() ;
 		if(CollectionUtil.isEmpty(taskList)){
 			loger.error("error@initTask,taskList_is_empty,task_has_not_started");
 			return ;
 		}
-		
+
+		loger.error("info@has_task_to_od,task_size=" + taskList.size() );
+
+
 		converTaskToQue(taskList);
 		consumerTask();
+
+		loger.error("end_to_craw_something");
+
 	}
 	
 	
@@ -75,6 +84,8 @@ public class LoadCrawQunen extends QuartzJobBean {
 				loger.error("error@task_fail_over_3_times,give_up,dto=" + JSONObject.toJSONString(cdto));
 				continue ;
 			}
+			loger.error("consumer_task,task=" + JSONObject.toJSONString(cdto));
+
 			Boolean flag = crawService.crawFromWeb(cdto);
 			if(flag == null){
 				continue;

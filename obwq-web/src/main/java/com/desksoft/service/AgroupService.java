@@ -8,6 +8,7 @@ import cn.obwq.entity.Agroup;
 import com.desksoft.dao.AgroupDao;
 
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author forever
@@ -15,11 +16,22 @@ import java.util.List;
 @Service(value = "agroupService")
 public class AgroupService {
 
+    private ConcurrentHashMap<Long,Agroup> map = new ConcurrentHashMap<Long, Agroup>();
+
     @Autowired
     private AgroupDao agroupDao;
 
     public Agroup selectById(Long gid) {
-        return agroupDao.selectById(gid);
+        Agroup agroup = map.get(gid);
+        if(agroup != null){
+            return agroup;
+        }
+        agroup =  agroupDao.selectById(gid);
+        if(agroup != null){
+            map.put(gid,agroup);
+            return agroup;
+        }
+        return null;
     }
 
 

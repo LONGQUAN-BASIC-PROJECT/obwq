@@ -27,7 +27,11 @@ public class ArticleDao extends BaseDao {
 	
 	public Boolean isExits(Article article){
 		Integer count = articleMapper.queryArticleCount(article);
-		return count == 0 ;
+		if(count == 0){
+			return false;
+		}else{
+			return true ;
+		}
 	}
 	
 	
@@ -43,4 +47,12 @@ public class ArticleDao extends BaseDao {
 		return articleMapper.queryArticleCountByGroupId(groupId);
 	}
 
+	public Integer queryCrawArticleCount() {
+		return articleMapper.queryCrawArticleCount();
+	}
+
+
+	public List<Article> queryHotArticle(Map<String, Object> params) {
+		return articleMapper.queryHotArticle(params);
+	}
 }

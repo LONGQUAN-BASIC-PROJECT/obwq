@@ -40,6 +40,7 @@
 		</constructor-arg>
 	</bean>
 
+	<bean id="cnblog" class="com.desksoft.handler.impl.CnBlogParseImpl" />
 
 	<bean id="handlerMap" class="java.util.HashMap">
 		<constructor-arg>
@@ -47,6 +48,79 @@
 				 <entry key="ZHIHU">
                   	<bean class="com.desksoft.handler.impl.ZhihuParseImpl"></bean>
               	 </entry>
+
+
+				<entry  key="APPLE" value-ref="cnblog"></entry>
+				<entry  key="WEIRUAN" value-ref="cnblog"></entry>
+				<entry  key="KEXUETANSUO" value-ref="cnblog"></entry>
+				<entry  key="CHENGXUYUAN" value-ref="cnblog"></entry>
+				<entry  key="FACEBOOK" value-ref="cnblog"></entry>
+				<entry  key="IPHONE" value-ref="cnblog"></entry>
+				<entry  key="ANDROID" value-ref="cnblog"></entry>
+				<entry  key="CHUANGYE" value-ref="cnblog"></entry>
+				<entry  key="BAIDU" value-ref="cnblog"></entry>
+				<entry  key="NUOJIYA" value-ref="cnblog"></entry>
+				<entry  key="SANXING" value-ref="cnblog"></entry>
+				<entry  key="ALIBABA" value-ref="cnblog"></entry>
+				<entry  key="YAMAXUN" value-ref="cnblog"></entry>
+				<entry  key="IPAD" value-ref="cnblog"></entry>
+				<entry  key="TWITTER" value-ref="cnblog"></entry>
+				<entry  key="WINDOWSPHONE" value-ref="cnblog"></entry>
+				<entry  key="WINDOWS8" value-ref="cnblog"></entry>
+				<entry  key="TENGXUN" value-ref="cnblog"></entry>
+				<entry  key="HULIANWANG" value-ref="cnblog"></entry>
+				<entry  key="XIAOMI" value-ref="cnblog"></entry>
+				<entry  key="TAOBAO" value-ref="cnblog"></entry>
+				<entry  key="FIREFOX" value-ref="cnblog"></entry>
+				<entry  key="JINGDONG" value-ref="cnblog"></entry>
+				<entry  key="NASA" value-ref="cnblog"></entry>
+				<entry  key="QIAOBUSI" value-ref="cnblog"></entry>
+				<entry  key="CHROME" value-ref="cnblog"></entry>
+				<entry  key="MAYUN" value-ref="cnblog"></entry>
+				<entry  key="LINUX" value-ref="cnblog"></entry>
+				<entry  key="WINDOWS7" value-ref="cnblog"></entry>
+				<entry  key="INTEL" value-ref="cnblog"></entry>
+				<entry  key="QIHU360" value-ref="cnblog"></entry>
+				<entry  key="WEIXIN" value-ref="cnblog"></entry>
+				<entry  key="SUONI" value-ref="cnblog"></entry>
+				<entry  key="IE" value-ref="cnblog"></entry>
+				<entry  key="HUAWEI" value-ref="cnblog"></entry>
+				<entry  key="ZHIFUBAO" value-ref="cnblog"></entry>
+				<entry  key="BAOXUE" value-ref="cnblog"></entry>
+				<entry  key="HUIPU" value-ref="cnblog"></entry>
+				<entry  key="SHENGDA" value-ref="cnblog"></entry>
+				<entry  key="HTC" value-ref="cnblog"></entry>
+				<entry  key="IBM" value-ref="cnblog"></entry>
+				<entry  key="IPHONE6PLUS" value-ref="cnblog"></entry>
+				<entry  key="LIANXIANG" value-ref="cnblog"></entry>
+				<entry  key="ORACLE" value-ref="cnblog"></entry>
+				<entry  key="UBUNTU" value-ref="cnblog"></entry>
+				<entry  key="SHEJI" value-ref="cnblog"></entry>
+				<entry  key="ADOBE" value-ref="cnblog"></entry>
+				<entry  key="QQ" value-ref="cnblog"></entry>
+				<entry  key="GROUPON" value-ref="cnblog"></entry>
+				<entry  key="ZHOUHONGYI" value-ref="cnblog"></entry>
+				<entry  key="XBOX" value-ref="cnblog"></entry>
+				<entry  key="MOTUOLUOLA" value-ref="cnblog"></entry>
+				<entry  key="YUNJISUAN" value-ref="cnblog"></entry>
+				<entry  key="LESHIWANG" value-ref="cnblog"></entry>
+				<entry  key="XINLANGWEIBO" value-ref="cnblog"></entry>
+				<entry  key="BING" value-ref="cnblog"></entry>
+				<entry  key="YIDONGHULIANWANG" value-ref="cnblog"></entry>
+				<entry  key="YOUTUBE" value-ref="cnblog"></entry>
+				<entry  key="SNS" value-ref="cnblog"></entry>
+				<entry  key="SURFACE" value-ref="cnblog"></entry>
+				<entry  key="HTML5" value-ref="cnblog"></entry>
+				<entry  key="JAVA" value-ref="cnblog"></entry>
+				<entry  key="TESLA" value-ref="cnblog"></entry>
+				<entry  key="HEIMEI" value-ref="cnblog"></entry>
+				<entry  key="JIQIREN" value-ref="cnblog"></entry>
+				<entry  key="ITBOKE" value-ref="cnblog"></entry>
+				<entry  key="APPLEWATCH" value-ref="cnblog"></entry>
+				<entry  key="ZHONGGUOLIANTONG" value-ref="cnblog"></entry>
+				<entry  key="DANGDANG" value-ref="cnblog"></entry>
+
+
 			</map>
 		</constructor-arg>
 	</bean>
