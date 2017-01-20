@@ -35,13 +35,10 @@ public class ZhihuParseImpl implements ParseArticlesHandler {
 				Article article = new Article () ;
 				String title = wel.getElementsByTag("span").text();
 				String url = wel.getElementsByTag("a").attr("href");
-				if(!url.startsWith("http")){
-					url = sechCrawDto.getUrl() + url ;
-				}
-				url = url.replace("//", "/");
+				url = "http://daily.zhihu.com" + url;
 				
 				article.setTitle(title);
-				article.setUrl(url);
+				article.setUrl(url.trim());
 				article.setGmtCreate(new Date());
 				article.setGetModify(new Date());
 				artList.add(article);
