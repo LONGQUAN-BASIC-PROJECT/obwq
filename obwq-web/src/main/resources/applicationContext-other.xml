@@ -48,7 +48,9 @@
 				 <entry key="ZHIHU">
                   	<bean class="com.desksoft.handler.impl.ZhihuParseImpl"></bean>
               	 </entry>
-
+				<entry key="CNNEWS">
+					<bean class="com.desksoft.handler.impl.ChinaNewsParseImpl"></bean>
+				</entry>
 
 				<entry  key="APPLE" value-ref="cnblog"></entry>
 				<entry  key="WEIRUAN" value-ref="cnblog"></entry>
