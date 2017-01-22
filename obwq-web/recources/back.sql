@@ -78,3 +78,5 @@ insert into t_agroup(name,descr,url,logo,type,acount,gmt_create,gmt_modify) valu
 
 
 
+
+insert into t_agroup(name,descr,url,logo,type,acount,gmt_create,gmt_modify) values('CNNEWS','中国新闻网','http://www.ecns.cn/news/politics/index.shtml','http://file.obwq.cn/static/images/cnnew.gif',1,0,now(),now()) ;
