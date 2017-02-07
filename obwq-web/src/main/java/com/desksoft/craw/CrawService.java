@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.desksoft.util.UrlHelp;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +41,8 @@ public class CrawService {
 	public Boolean crawFromWeb(SechCrawDto sechCrawDto){
 		try {
 
-			ParseArticlesHandler handler = handlerMap.get(sechCrawDto.getName());
+			String crawType = UrlHelp.getCrawType(sechCrawDto);
+			ParseArticlesHandler handler = handlerMap.get(crawType);
 			if(handler == null){
 				return null ;
 			}
@@ -83,7 +85,13 @@ public class CrawService {
 		}
 	}
 
-	
+
+	private String getCrawType(SechCrawDto sechCrawDto) {
+		//if()
+
+		return null ;
+	}
+
 	
 	
 	public static void main(String[] args) {

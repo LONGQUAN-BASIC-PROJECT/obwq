@@ -151,32 +151,39 @@ public class LoadCrawQunen extends QuartzJobBean {
 					continue;//少于两者的数据
 				}
 			}
-			SechCrawDto sto = new SechCrawDto();
 
-			/*
-			AgroupEnum agm = AgroupEnum.getByType(task.getName());
-			if(agm == null){
-				continue ;
+			String url = task.getUrl() ;
+			if(url.indexOf(",") == -1){
+				SechCrawDto sto = new SechCrawDto();
+				sto.setId(task.getId());
+				sto.setName(task.getName());
+				sto.setDescr(task.getDescr());
+				sto.setLogo(task.getLogo());
+				sto.setAcount(task.getAcount());
+				sto.setFeature(task.getFeature());
+				sto.setType(task.getType());
+				sto.setGmtCreate(task.getGmtCreate());
+				sto.setGetModify(task.getGetModify());
+				sto.setUrl(task.getUrl());
+				taskQue.add(sto);
+			}else {
+				String[] uarr = url.split(",");
+				for(String u : uarr){
+					SechCrawDto sto = new SechCrawDto();
+					sto.setId(task.getId());
+					sto.setName(task.getName());
+					sto.setDescr(task.getDescr());
+					sto.setLogo(task.getLogo());
+					sto.setAcount(task.getAcount());
+					sto.setFeature(task.getFeature());
+					sto.setType(task.getType());
+					sto.setGmtCreate(task.getGmtCreate());
+					sto.setGetModify(task.getGetModify());
+					sto.setUrl(u);
+					taskQue.add(sto);
+				}
 			}
 
-			try {
-				BeanUtils.copyProperties(sto,task);
-			}catch (Exception e){
-
-			}
-			*/
-			sto.setId(task.getId());
-			sto.setName(task.getName());
-			sto.setDescr(task.getDescr());
-			sto.setLogo(task.getLogo());
-			sto.setAcount(task.getAcount());
-			sto.setFeature(task.getFeature());
-			sto.setType(task.getType());
-			sto.setGmtCreate(task.getGmtCreate());
-			sto.setGetModify(task.getGetModify());
-			sto.setUrl(task.getUrl());
-
-			taskQue.add(sto);
 		}
 	}
 	

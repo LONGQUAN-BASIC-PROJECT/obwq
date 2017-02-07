@@ -51,6 +51,9 @@
 				<entry key="CNNEWS">
 					<bean class="com.desksoft.handler.impl.ChinaNewsParseImpl"></bean>
 				</entry>
+				<entry key="YICAI">
+					<bean class="com.desksoft.handler.impl.FirstNewsParseImpl"></bean>
+				</entry>
 
 				<entry  key="APPLE" value-ref="cnblog"></entry>
 				<entry  key="WEIRUAN" value-ref="cnblog"></entry>

@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class HttpClientUtil {
 
-	public static String getHttpContent_bak(String url) {
+	public static String getHttpContent_bak(String url,String charset) {
 		// 创建HttpClientBuilder
 		HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
 		// HttpClient
@@ -26,7 +26,7 @@ public class HttpClientUtil {
 			HttpEntity entity = httpResponse.getEntity();
 			// 判断响应实体是否为空
 			if (entity != null) {
-				return EntityUtils.toString(entity);
+				return EntityUtils.toString(entity,"UTF-8");
 			}
 		} catch (IOException e) {
 			// e.printStackTrace();
@@ -47,7 +47,14 @@ public class HttpClientUtil {
 			if(url.startsWith("https:")){
 				str = 	runHttps(url);
 			}else{
-				str =  getHttpContent_bak(url);
+
+				String charset = UrlHelp.getCharset(url);
+				if(cn.obwq.util.StringUtils.isNotBlank(charset)){
+					str =  getHttpContent_bak(url,charset);
+				}else{
+					str =  getHttpContent_bak(url,null);
+				}
+
 			}
 			return str ;
 		}catch(Exception e){
