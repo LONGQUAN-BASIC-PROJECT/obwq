@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.desksoft.util.HttpClientUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -42,10 +43,21 @@ public class ZhihuParseImpl implements ParseArticlesHandler {
 				article.setGmtCreate(new Date());
 				article.setGetModify(new Date());
 				artList.add(article);
+				System.out.println("title="+title + ",url= "+url + " ,time=" + article.getGmtCreate());
+
 			}
 		}
 		
 		return artList;
+	}
+
+
+	public static void main(String[] s) throws Exception{
+
+		String pageContent = HttpClientUtil.getHttpContent("http://daily.zhihu.com");
+
+		new ZhihuParseImpl().parser(pageContent,null  );
+
 	}
 
 }

@@ -25,7 +25,9 @@ public class HttpClientUtil {
 			// 获取响应消息实体
 			HttpEntity entity = httpResponse.getEntity();
 			// 判断响应实体是否为空
-			if (entity != null) {
+			if (entity != null && cn.obwq.util.StringUtils.isNotEmpty(charset)) {
+				return EntityUtils.toString(entity,charset);
+			}else if(entity != null){
 				return EntityUtils.toString(entity,"UTF-8");
 			}
 		} catch (IOException e) {
@@ -47,7 +49,6 @@ public class HttpClientUtil {
 			if(url.startsWith("https:")){
 				str = 	runHttps(url);
 			}else{
-
 				String charset = UrlHelp.getCharset(url);
 				if(cn.obwq.util.StringUtils.isNotBlank(charset)){
 					str =  getHttpContent_bak(url,charset);

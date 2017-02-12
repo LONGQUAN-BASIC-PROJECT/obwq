@@ -121,7 +121,10 @@ public class LoadCrawQunen extends QuartzJobBean {
 			return new ArrayList<Agroup>();
 		}
 		for(Agroup ag : list){
-			ag.addFeature("inter_time","1200");
+			String featureName = ag.getFeature("inter_time");
+			if(StringUtils.isBlank(featureName)){
+				ag.addFeature("inter_time","1200"); //20分钟
+			}
 		}
 		return list ;
 

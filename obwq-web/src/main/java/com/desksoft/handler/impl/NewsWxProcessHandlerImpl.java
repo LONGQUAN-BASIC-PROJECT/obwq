@@ -7,7 +7,7 @@ import com.desksoft.entity.ReceiveXmlEntity;
 import com.desksoft.entity.dto.WxNewsReplyDto;
 import com.desksoft.handler.WxProcessHandler;
 
-@Deprecated
+
 public class NewsWxProcessHandlerImpl extends WxProcessHandler {
 
 	public String handler(ReceiveXmlEntity xmlEntity) {

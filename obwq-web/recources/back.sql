@@ -80,5 +80,5 @@ insert into t_agroup(name,descr,url,logo,type,acount,gmt_create,gmt_modify) valu
 
 
 insert into t_agroup(name,descr,url,logo,type,acount,gmt_create,gmt_modify) values('CNNEWS','中国新闻网','http://www.ecns.cn/news/politics/index.shtml','http://file.obwq.cn/static/images/cnnew.gif',1,0,now(),now()) ;
-
 insert into t_agroup(name,descr,url,logo,type,acount,gmt_create,gmt_modify) values('YICAI','第一财经','http://www.yicai.com/news/?charset=UTF-8','http://www.yicai.com/resource/images/index_07.jpg',1,0,now(),now()) ;
+insert into t_agroup(name,descr,url,logo,type,acount,gmt_create,gmt_modify,feature) values('NET163','网易科技','http://tech.163.com/special/00097UHL/tech_datalist.js?callback=data_callback&charset=GB2312','http://img3.cache.netease.com/tech/2016/2/14/20160214142640d25a3.png',1,0,now(),now(),'inter_time->3600#last_craw_time->2017-02-11 19:20:10#') ;
