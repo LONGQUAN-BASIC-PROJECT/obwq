@@ -17,7 +17,10 @@
 	
 	<bean id="lf" class="com.desksoft.common.LoadWebAddressFromXml"></bean>
 	<bean id="en" class="com.desksoft.common.LoadEnFromJson"></bean>
-	<bean id="loadQue" class="com.desksoft.craw.LoadCrawQunen" init-method="initTask"></bean>
+	<bean id="loadQue" class="com.desksoft.craw.LoadCrawQunen" init-method="initTask">
+		<property name="debug" value="${isDdebug}"></property>
+
+	</bean>
 	
 
 
@@ -53,6 +56,10 @@
 				</entry>
 				<entry key="YICAI">
 					<bean class="com.desksoft.handler.impl.FirstNewsParseImpl"></bean>
+				</entry>
+
+				<entry key="NET163">
+					<bean class="com.desksoft.handler.impl.Net163NewsParseImpl"></bean>
 				</entry>
 
 				<entry  key="APPLE" value-ref="cnblog"></entry>

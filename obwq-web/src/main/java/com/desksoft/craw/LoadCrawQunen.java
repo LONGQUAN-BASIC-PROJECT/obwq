@@ -39,6 +39,9 @@ public class LoadCrawQunen extends QuartzJobBean {
 	@Autowired
 	private AgroupService agroupService ;
 
+
+	private Boolean debug ;
+
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 		initTask();
 	}
@@ -84,6 +87,12 @@ public class LoadCrawQunen extends QuartzJobBean {
 				loger.error("error@task_fail_over_3_times,give_up,dto=" + JSONObject.toJSONString(cdto));
 				continue ;
 			}
+
+			String name = cdto.getName();
+			if(!name.equals("")){
+
+			}
+
 			loger.error("consumer_task,task=" + JSONObject.toJSONString(cdto));
 
 			Boolean flag = crawService.crawFromWeb(cdto);
@@ -115,7 +124,9 @@ public class LoadCrawQunen extends QuartzJobBean {
 	
 	
 	public List<Agroup> fetchTask(){
-
+		if(debug == null || debug){
+			return null ;
+		}
 		List<Agroup> list =  agroupService.selectAllByType();
 		if (CollectionUtil.isEmpty(list)){
 			return new ArrayList<Agroup>();
@@ -136,7 +147,7 @@ public class LoadCrawQunen extends QuartzJobBean {
 		}
 
 		for(Agroup task : taskList){
-			//判断两次爬取间隔
+			//判断两次爬取间隔consumer_task
 			//如果太近就不爬了
 			String inter_time = task.getFeature("inter_time"); //每次爬取的秒数据
 			if(StringUtils.isBlank(inter_time) || !StringUtils.isNumeric(inter_time)){ //没有间隔数据
@@ -189,7 +200,15 @@ public class LoadCrawQunen extends QuartzJobBean {
 
 		}
 	}
-	
+
+
+	public Boolean getDebug() {
+		return debug;
+	}
+
+	public void setDebug(Boolean ddebug) {
+		debug = ddebug;
+	}
 	
 	
 }

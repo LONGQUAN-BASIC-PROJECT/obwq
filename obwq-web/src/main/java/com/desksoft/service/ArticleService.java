@@ -48,4 +48,15 @@ public class ArticleService   {
 		params.put("offset", (currnetPage -1 ) * pageSize);
 		return articleDao.queryHotArticle(params);
 	}
+
+
+	public Boolean isExits(Article article){
+		return articleDao.isExits(article);
+	}
+
+	public void insert(Article article){
+		articleDao.insert(article);
+	}
+
+
 }

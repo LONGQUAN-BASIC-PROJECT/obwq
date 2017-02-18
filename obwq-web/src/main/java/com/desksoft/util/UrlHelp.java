@@ -1,8 +1,13 @@
 package com.desksoft.util;
 
+import cn.obwq.constants.DATE_FORMAT;
 import cn.obwq.dto.SechCrawDto;
+import cn.obwq.util.DateUtil;
 import cn.obwq.util.StringUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,8 +79,20 @@ public class UrlHelp {
         }
 
         return charset ;
-
     }
+
+
+    public static String getUrlTitle(String url){
+
+        String pageContent = HttpClientUtil.getHttpContent(url);
+        if(StringUtils.isBlank(pageContent)){
+            return DateUtil.getDateString(new Date(), DATE_FORMAT.yyyy_mm_dd_hh_mm_ss) + "的标题" ;
+        }
+
+        Document jsoup =  Jsoup.parse(pageContent);
+        return jsoup.title();
+    }
+
 
     public static void main(String[] a){
 
