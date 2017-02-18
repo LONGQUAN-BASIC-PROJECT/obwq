@@ -80,3 +80,6 @@ create table t_user_article
 
 
 
+ALTER TABLE t_article ADD thumbnail varchar(200);
+ALTER TABLE t_article ADD feature	 varchar(200);
+

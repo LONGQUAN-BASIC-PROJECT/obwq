@@ -56,7 +56,7 @@ public class CrawService {
 				return false;//进入重试队列
 			}
 			for(Article article : listArt){
-				article.setGroupId(sechCrawDto.getId());
+				//article.setGroupId(sechCrawDto.getId());
 				saveArticle(article);
 			}
 			return true ;

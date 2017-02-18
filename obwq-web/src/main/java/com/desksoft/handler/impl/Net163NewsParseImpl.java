@@ -40,16 +40,19 @@ public class Net163NewsParseImpl implements ParseArticlesHandler {
             String time = object.getString("time");
 
 
+            String rurl = "http://3g.163.com/touch/article.html?docid=" + url.substring(url.lastIndexOf("/") + 1,url.lastIndexOf("."));
+
             if(StringUtils.isBlank(time)){
                 article.setGmtCreate(new Date());
             }else {
                 article.setGmtCreate(DateUtil.parseDate(time, DATE_FORMAT.mm_dd_yyyy_hh_mm_ss));
             }
             article.setTitle(title);
-            article.setUrl(url);
+            article.setUrl(rurl);
 
             article.setGetModify(new Date());
             artList.add(article);
+            article.setGroupId(sechCrawDto.getId());
             System.out.println("title="+title + ",url= "+url + " ,time=" + article.getGmtCreate());
 
         }
@@ -60,9 +63,15 @@ public class Net163NewsParseImpl implements ParseArticlesHandler {
 
 
     public static void main(String[] s) throws Exception{
-        String pageContent = HttpClientUtil.getHttpContent("http://tech.163.com/special/00097UHL/tech_datalist.js?callback=data_callback&charset=GB2312");
-        new Net163NewsParseImpl().parser(pageContent,null  );
+        //String pageContent = HttpClientUtil.getHttpContent("http://tech.163.com/special/00097UHL/tech_datalist.js?callback=data_callback&charset=GB2312");
+        //new Net163NewsParseImpl().parser(pageContent,null  );
 
+
+        String url = "http://tech.163.com/17/0212/09/CD2I295700097U7T.html\n" ;
+
+        String rurl = "http://3g.163.com/touch/article.html?docid=" + url.substring(url.lastIndexOf("/")+1,url.lastIndexOf("."));
+
+        System.out.print(rurl);
     }
 
 }

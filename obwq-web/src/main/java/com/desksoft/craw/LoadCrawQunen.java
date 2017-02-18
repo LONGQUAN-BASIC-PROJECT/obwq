@@ -2,6 +2,7 @@ package com.desksoft.craw;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -39,10 +40,15 @@ public class LoadCrawQunen extends QuartzJobBean {
 	@Autowired
 	private AgroupService agroupService ;
 
-
 	private Boolean debug ;
 
+	//首次运行
+	private Boolean isFirtstRun = true;
+
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
+		if(isFirtstRun){
+			isFirtstRun = false ;
+		}
 		initTask();
 	}
 
@@ -131,12 +137,25 @@ public class LoadCrawQunen extends QuartzJobBean {
 		if (CollectionUtil.isEmpty(list)){
 			return new ArrayList<Agroup>();
 		}
-		for(Agroup ag : list){
+
+		Iterator<Agroup> it =  list.iterator();
+
+		while(it.hasNext()){
+			Agroup ag = it.next();
 			String featureName = ag.getFeature("inter_time");
 			if(StringUtils.isBlank(featureName)){
 				ag.addFeature("inter_time","1200"); //20分钟
 			}
+
+			//Test
+			//if(!ag.getName().equals("MEI_ZI_TU")){
+			//		it.remove();
+			//}
+			//test
+
 		}
+
+
 		return list ;
 
 	}

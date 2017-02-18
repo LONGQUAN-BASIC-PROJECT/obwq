@@ -47,7 +47,7 @@ public class FirstNewsParseImpl implements ParseArticlesHandler {
 
             article.setTitle(title);
             article.setUrl(url);
-
+            article.setGroupId(sechCrawDto.getId());
             article.setGetModify(new Date());
             artList.add(article);
             System.out.println("title="+title + ",url= "+url + " ,time=" + article.getGmtCreate());

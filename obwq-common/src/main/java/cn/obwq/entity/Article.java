@@ -1,13 +1,19 @@
 package cn.obwq.entity;
 
 
+import cn.obwq.util.FeatureUtil;
+import cn.obwq.util.StringUtils;
+
+import java.util.Map;
 
 public class Article extends  BaseDo {
 
 	private static final long serialVersionUID = -2945100587470256594L;
 	
 	private Long id ; 
-	
+
+	private String thumbnail;
+
 	private String title ;
 	
 	private String url ;
@@ -25,6 +31,17 @@ public class Article extends  BaseDo {
 	private String groupUrl ;
 
 	private String groupLogo ;
+
+	/**
+	 * 其它属性
+	 */
+	private String feature;
+
+	/**
+	 * 其它属性
+	 */
+	private Map<String,String> attr;
+
 
 	public Long getId() {
 		return id;
@@ -106,4 +123,62 @@ public class Article extends  BaseDo {
 	public void setGroupLogo(String groupLogo) {
 		this.groupLogo = groupLogo;
 	}
+
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
+	public String getFeature() {
+		return feature;
+	}
+
+	public void setFeature(String feature) {
+		this.feature = feature;
+	}
+
+
+	protected void initattrMap() {
+		if (null == attr) {
+			attr = FeatureUtil.initAttrMap(feature);
+		}
+	}
+
+	public void addFeature(String name, String value){
+
+		if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(value)) {
+			initattrMap();
+			attr.put(name, value);
+			resetFeature();
+		}
+	}
+
+	public String getFeature(String name){
+		initattrMap();
+		String value = attr.get(name);
+		return value==null ? "" : value;
+	}
+
+	public boolean removeFeature(String name){
+		initattrMap();
+		boolean flag = false;
+		if(attr.containsKey(name)){
+			attr.remove(name);
+			resetFeature();
+			flag = true;
+		}else{
+			flag = false;
+		}
+		return flag;
+	}
+
+	private void resetFeature(){
+		this.feature = FeatureUtil.resetAttrMap(attr);
+	}
+
+
 }

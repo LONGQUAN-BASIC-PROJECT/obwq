@@ -43,6 +43,7 @@ public class ZhihuParseImpl implements ParseArticlesHandler {
 				article.setGmtCreate(new Date());
 				article.setGetModify(new Date());
 				artList.add(article);
+				article.setGroupId(sechCrawDto.getId());
 				System.out.println("title="+title + ",url= "+url + " ,time=" + article.getGmtCreate());
 
 			}

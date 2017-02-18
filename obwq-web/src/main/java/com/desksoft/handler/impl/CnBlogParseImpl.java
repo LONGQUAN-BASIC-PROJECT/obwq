@@ -40,6 +40,7 @@ public class CnBlogParseImpl implements ParseArticlesHandler {
 
             article.setTitle(title);
             article.setUrl(url);
+            article.setGroupId(sechCrawDto.getId());
             article.setGmtCreate(DateUtil.parseDate(time, DATE_FORMAT.yyyy_mm_dd_hh_mm_ss));
             article.setGetModify(new Date());
             artList.add(article);

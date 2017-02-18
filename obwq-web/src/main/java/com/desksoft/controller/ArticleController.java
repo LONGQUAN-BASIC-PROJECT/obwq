@@ -1,11 +1,16 @@
 package com.desksoft.controller;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import cn.obwq.dto.SechCrawDto;
+import cn.obwq.entity.Agroup;
+import cn.obwq.entity.Article;
+import cn.obwq.result.PageResult;
+import cn.obwq.result.SingleResult;
 import cn.obwq.util.StringUtils;
+import com.desksoft.common.constants.AgroupEnum;
+import com.desksoft.craw.ClounService;
+import com.desksoft.craw.CrawService;
+import com.desksoft.service.AgroupService;
+import com.desksoft.service.ArticleService;
 import com.desksoft.util.CollectionUtil;
 import com.desksoft.util.UrlHelp;
 import org.slf4j.Logger;
@@ -17,16 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.obwq.entity.Agroup;
-import cn.obwq.entity.Article;
-import cn.obwq.result.PageResult;
-import cn.obwq.result.SingleResult;
-
-import com.desksoft.common.constants.AgroupEnum;
-import com.desksoft.craw.CrawService;
-import cn.obwq.dto.SechCrawDto;
-import com.desksoft.service.AgroupService;
-import com.desksoft.service.ArticleService;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author forever
@@ -44,6 +42,9 @@ public class ArticleController {
     private ArticleService articleService;
     @Autowired
     private AgroupService agroupService;
+    @Autowired
+    private ClounService clounService;
+
 
 
     @RequestMapping(value = "/craw_article", method = RequestMethod.GET)
@@ -242,5 +243,44 @@ public class ArticleController {
         return pageResult;
     }
 
+
+
+    /**
+     * @param request
+     * @param key
+     * @return
+     */
+    @RequestMapping(value = "/image/view/{key}", method = RequestMethod.GET)
+    @ResponseBody
+    public SingleResult<String> getFileContent(HttpServletRequest request,
+                                                @PathVariable("key") String key) {
+
+        SingleResult<String> pageResult = new SingleResult<String>();
+
+        try {
+            if(StringUtils.isBlank(key) ){
+                pageResult.setSuccess(Boolean.FALSE);
+                pageResult.setResultDesc("key为空，或不存在的key");
+                return pageResult ;
+            }
+
+            String content = clounService.getFileContent(key) ;
+            if(StringUtils.isBlank(content)){
+                pageResult.setSuccess(Boolean.FALSE);
+                pageResult.setResultDesc("key为空，或不存在的key");
+                return pageResult ;
+            }
+
+            pageResult.setResult(content);
+
+            loger.error("etFileContent,key={},content={}", new Object[]{key,content});
+
+        } catch (Exception e) {
+            loger.error("error@addArticleByUrl", new Object[]{key, e.getMessage()});
+            pageResult.setSuccess(Boolean.FALSE);
+            pageResult.setResultDesc(e.getMessage());
+        }
+        return pageResult;
+    }
 
 }
