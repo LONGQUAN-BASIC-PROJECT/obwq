@@ -59,8 +59,8 @@ public class ClounService {
 
     public String getFileContent(String key){
         try {
-            //String URL = "http://uc.obwq.cn/" + key ;
-            String URL = "http://ohz1b1x2j.bkt.clouddn.com/" + key ;
+            String URL = "http://uc.obwq.cn/" + key ;
+            //String URL = "http://ohz1b1x2j.bkt.clouddn.com/" + key ;
             Auth auth = Auth.create(accessKey, secretKey);
             String downloadRUL = auth.privateDownloadUrl(URL, 3600);
 

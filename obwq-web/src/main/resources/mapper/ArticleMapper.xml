@@ -17,7 +17,7 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		a_id,title, url,praise,group_id , comment,collection , gmt_create, gmt_modify
+		a_id,title, url,praise,group_id , comment,collection , gmt_create, gmt_modify,thumbnail,feature
   </sql>
 
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
@@ -132,8 +132,7 @@
 
 	<select id="queryHotArticle" resultMap="BaseResultMap"	parameterType="java.util.Map">
 		select
-				ta.a_id,ta.title, ta.url,ta.praise,ta.group_id , ta.comment,ta.collection , ta.gmt_create, ta.gmt_modify
-
+				ta.a_id,ta.title, ta.url,ta.praise,ta.group_id , ta.comment,ta.collection , ta.gmt_create, ta.gmt_modify,ta.thumbnail,ta.feature
 		from t_article ta,t_agroup tp where tp.type = 1 and ta.group_id = tp.g_id  order by gmt_create desc limit #{offset} ,#{pageSize}
 	</select>
 
