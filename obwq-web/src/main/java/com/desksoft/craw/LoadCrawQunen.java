@@ -40,15 +40,7 @@ public class LoadCrawQunen extends QuartzJobBean {
 	@Autowired
 	private AgroupService agroupService ;
 
-	private Boolean debug ;
-
-	//首次运行
-	private Boolean isFirtstRun = true;
-
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
-		if(isFirtstRun){
-			isFirtstRun = false ;
-		}
 		initTask();
 	}
 
@@ -130,9 +122,6 @@ public class LoadCrawQunen extends QuartzJobBean {
 	
 	
 	public List<Agroup> fetchTask(){
-		if(debug == null || debug){
-			return null ;
-		}
 		List<Agroup> list =  agroupService.selectAllByType();
 		if (CollectionUtil.isEmpty(list)){
 			return new ArrayList<Agroup>();
@@ -221,13 +210,4 @@ public class LoadCrawQunen extends QuartzJobBean {
 	}
 
 
-	public Boolean getDebug() {
-		return debug;
-	}
-
-	public void setDebug(Boolean ddebug) {
-		debug = ddebug;
-	}
-	
-	
 }

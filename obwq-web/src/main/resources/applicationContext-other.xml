@@ -18,7 +18,6 @@
 	<bean id="lf" class="com.desksoft.common.LoadWebAddressFromXml"></bean>
 	<bean id="en" class="com.desksoft.common.LoadEnFromJson"></bean>
 	<bean id="loadQue" class="com.desksoft.craw.LoadCrawQunen" init-method="initTask">
-		<property name="debug" value="${isDdebug}"></property>
 	</bean>
 
 
