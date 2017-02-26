@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -141,6 +142,51 @@ public class ArticleController {
         }
         return pageResult;
     }
+
+
+    /**
+     * http://localhost:8888/obwq/ae/get/articles/groups/7814_7806/20/1.htm
+     * @param request
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    @RequestMapping(value = "/get/articles/groups/{groupIds}/{pageSize}/{currentPage}", method = RequestMethod.GET)
+    @ResponseBody
+    public PageResult<List<Article>> readArticleBygroupIds(HttpServletRequest request,
+        @PathVariable("groupIds") String groupIds,
+        @PathVariable("pageSize") Integer pageSize,
+        @PathVariable("currentPage") Integer currentPage) {
+
+        PageResult<List<Article>> pageResult = new PageResult<List<Article>>();
+
+        try {
+
+            List<String> groupIdList = new ArrayList<String>();
+            for(String str : groupIds.split("_")){
+                groupIdList.add(str);
+            }
+
+            Integer pageCount = articleService.queryArticleCountByGroupIds(groupIdList);
+            if ((currentPage - 1) * pageSize >= pageCount) {
+                pageResult.setSuccess(Boolean.FALSE);
+                pageResult.setResultDesc("has not more data");
+                // 没有更多的数据
+                return pageResult;
+            }
+            List<Article> listArticle = articleService.queryArticleByGroup(groupIdList, currentPage, pageSize);
+            pageResult.setResult(listArticle);
+            pageResult.setPageSize(pageSize);
+            pageResult.setTotalSize(pageCount);
+            pageResult.setTotalPage(Double.valueOf(Math.ceil(pageCount * 1.0 / pageSize)).intValue());
+        } catch (Exception e) {
+            loger.error("updateUser@readArticleBygroupIds,groupIds={},pageSize={},currentPage={},message={}", new Object[]{groupIds, pageSize, currentPage, e.getMessage()});
+            pageResult.setSuccess(Boolean.FALSE);
+            pageResult.setResultDesc(e.getMessage());
+        }
+        return pageResult;
+    }
+
 
 
     /**
@@ -282,5 +328,8 @@ public class ArticleController {
         }
         return pageResult;
     }
+
+
+
 
 }

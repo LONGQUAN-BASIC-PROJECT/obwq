@@ -55,4 +55,8 @@ public class ArticleDao extends BaseDao {
 	public List<Article> queryHotArticle(Map<String, Object> params) {
 		return articleMapper.queryHotArticle(params);
 	}
+
+    public Integer queryArticleCountByGroupIds(List<String> groupIdList) {
+		return articleMapper.queryArticleCountByGroupIds(groupIdList);
+    }
 }

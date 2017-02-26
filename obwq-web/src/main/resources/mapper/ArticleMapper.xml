@@ -118,6 +118,14 @@
 	</select>
 
 
+	<select id="queryArticleCountByGroupIds" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+		select count(0) from t_article where group_id in
+		<foreach collection="list" index="index" item="groupId" open="(" separator="," close=")">
+			 #{groupId}
+		</foreach>
+	</select>
+
+
 	<select id="queryCrawArticleCount" resultType="java.lang.Integer">
 		select count(0)  from t_article ta ,t_agroup tg where ta.group_id = tg.g_id and tg.type = 1
 	</select>
@@ -126,7 +134,14 @@
 	<select id="queryArticleByGroup" resultMap="BaseResultMap"	parameterType="java.util.Map">
 		select 
 			<include refid="Base_Column_List" />
-		from t_article where group_id = #{groupId} order by gmt_create desc limit #{offset} ,#{pageSize} 
+		from t_article where group_id in
+
+		<foreach collection="groupIds" index="index" item="groupId" open="(" separator="," close=")">
+			#{groupId}
+		</foreach>
+
+
+		order by gmt_create desc limit #{offset} ,#{pageSize}
 	</select>
 
 

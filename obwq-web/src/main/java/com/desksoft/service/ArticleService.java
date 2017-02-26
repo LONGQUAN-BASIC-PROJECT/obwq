@@ -1,5 +1,6 @@
 package com.desksoft.service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +31,15 @@ public class ArticleService   {
 		Map<String,Object> params = new HashMap<String, Object>();
 		params.put("pageSize", pageSize);
 		params.put("offset", (currnetPage -1 ) * pageSize);
-		params.put("groupId", groupId);
+		params.put("groupIds", Arrays.asList(new Long[]{groupId}));
+		return articleDao.queryArticleByGroup(params);
+	}
+
+	public List<Article> queryArticleByGroup(List<String> groupIds,Integer currnetPage,Integer pageSize){
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("pageSize", pageSize);
+		params.put("offset", (currnetPage -1 ) * pageSize);
+		params.put("groupIds", groupIds);
 		return articleDao.queryArticleByGroup(params);
 	}
 
@@ -58,5 +67,7 @@ public class ArticleService   {
 		articleDao.insert(article);
 	}
 
-
+	public Integer queryArticleCountByGroupIds(List<String> groupIdList) {
+		return articleDao.queryArticleCountByGroupIds(groupIdList);
+	}
 }
