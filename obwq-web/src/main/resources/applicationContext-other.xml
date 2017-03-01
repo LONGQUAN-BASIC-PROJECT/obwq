@@ -18,9 +18,9 @@
 	<bean id="lf" class="com.desksoft.common.LoadWebAddressFromXml"></bean>
 	<bean id="en" class="com.desksoft.common.LoadEnFromJson"></bean>
 	<!--
-	<bean id="loadQue" class="com.desksoft.craw.LoadCrawQunen" init-method="initTask">
-	</bean>
--->
+		<bean id="loadQue" class="com.desksoft.craw.LoadCrawQunen" init-method="initTask">
+		</bean>
+	-->
 
 	<bean id="clounService" class="com.desksoft.craw.ClounService">
 		<property name="accessKey" value="${accessKey}"></property>
@@ -69,6 +69,10 @@
 
 				<entry key="MEI_ZI_TU">
 					<bean class="com.desksoft.handler.impl.MeiziParseImpl"></bean>
+				</entry>
+
+				<entry key="SINGLE_MEI_ZI_TU">
+					<bean class="com.desksoft.handler.impl.SingleMeiziParseImpl"></bean>
 				</entry>
 
 				<entry  key="APPLE" value-ref="cnblog"></entry>

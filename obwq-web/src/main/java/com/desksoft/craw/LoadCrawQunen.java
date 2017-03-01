@@ -41,8 +41,7 @@ public class LoadCrawQunen extends QuartzJobBean {
 	private AgroupService agroupService ;
 
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
-
-		//initTask();
+		initTask();
 	}
 
 	public void initTask(){

@@ -12,7 +12,13 @@ import com.desksoft.craw.CrawService;
 import com.desksoft.service.AgroupService;
 import com.desksoft.service.ArticleService;
 import com.desksoft.util.CollectionUtil;
+import com.desksoft.util.HttpClientUtil;
+import com.desksoft.util.T;
 import com.desksoft.util.UrlHelp;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,18 +53,86 @@ public class ArticleController {
     @Autowired
     private ClounService clounService;
 
+    @RequestMapping(value = "/craw_all", method = RequestMethod.GET)
+    @ResponseBody
+    public SingleResult<String> crawAll(HttpServletRequest request,String url) {
+
+        SingleResult<String> result = new SingleResult<String>();
+        try {
+            mainInput();
+        } catch (Exception e) {
+            result.setResult("爬取失败，重试");
+            result.setSuccess(Boolean.FALSE);
+        }
+
+        return result;
+    }
+
+    public  void mainInput() throws Exception {
+        FileInputStream fis = null;
+        InputStreamReader isr = null;
+        BufferedReader br = null; //用于包装InputStreamReader,提高处理性能。因为BufferedReader有缓冲的，而InputStreamReader没有。
+        try {
+            String str = "";
+            fis = new FileInputStream("/Users/guoxing.zgx/Documents/index.txt");// FileInputStream
+            // 从文件系统中的某个文件中获取字节
+            isr = new InputStreamReader(fis);// InputStreamReader 是字节流通向字符流的桥梁,
+            br = new BufferedReader(isr);// 从字符输入流中读取文件中的内容,封装了一个new InputStreamReader的对象
+            while ((str = br.readLine()) != null) {
+                process(str);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("找不到指定文件");
+        } catch (IOException e) {
+            System.out.println("读取文件失败");
+        } finally {
+            try {
+                br.close();
+                isr.close();
+                fis.close();
+                // 关闭的时候最好按照先后顺序关闭最后开的先关闭所以先关s,再关n,最后关m
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public  void process(String url){
+        try {
+            loger.error("startprocess:" + url);
+            String content =  HttpClientUtil.getHttpContent(url);
+            Document jsoup =  Jsoup.parse(content);
+            Elements els = jsoup.select(".wp-list .wp-item .con .pic a");
+            for(Element e : els){
+                String itemUrl =  e.attr("href");
+                loger.error("mainUrl:" + url+",suburl:" + itemUrl);
+
+                SechCrawDto sec = new SechCrawDto();
+                sec.setName("SINGLE_MEI_ZI_TU");
+                sec.setUrl(itemUrl +"?charset=GBK");
+                crawService.crawFromWeb(sec);
+            }
+            loger.error("endprocess:" + url);
+
+        }catch (Exception e){
+            loger.error("errorprocess:" + url);
+        }
+
+
+
+
+    }
 
 
     @RequestMapping(value = "/craw_article", method = RequestMethod.GET)
     @ResponseBody
-    public SingleResult<String> craw(HttpServletRequest request) {
+    public SingleResult<String> craw(HttpServletRequest request,String url) {
 
         SingleResult<String> result = new SingleResult<String>();
         try {
             SechCrawDto sec = new SechCrawDto();
-            sec.setName(AgroupEnum.ZHIHU.name());
-            sec.setUrl("http://daily.zhihu.com/");
-            sec.setId(1l);
+            sec.setName("SINGLE_MEI_ZI_TU");
+            sec.setUrl(url +"?charset=GBK");
             crawService.crawFromWeb(sec);
             result.setResult("爬取成功");
         } catch (Exception e) {
@@ -328,6 +403,9 @@ public class ArticleController {
         }
         return pageResult;
     }
+
+
+
 
 
 
